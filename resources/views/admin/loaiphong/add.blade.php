@@ -1,4 +1,7 @@
 @extends("admin.index")
+@section('title')
+    Thêm danh mục loại phòng
+@endsection
 @section('content')
 
 {{-- @dd($edit) --}}
@@ -20,9 +23,17 @@
             <form action="{{ route('adddm') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên danh mục</label>
-                  <input class="form-control mb-3" value="" name="namedm" type="text">
+                  <input class="form-control mb-3" value="{{old('namedm')}}" name="namedm" type="text">
+                  @error('namedm')
+                  <span style="color: red">{{$message}}</span><br>
+                      
+                  @enderror
                   <label class="control-label">Ảnh</label>
                   <input class="form-control mb-3"  name="avatar" type="file">
+                  @error('avatar')
+                  <span style="color: red">{{$message}}</span>
+                      
+                  @enderror
                   <div class="mt-3">
                     <button class="btn btn-save" type="submit" name="btnsubmit">Lưu lại</button>
                   <a class="btn btn-cancel" href="{{ route('listloaiphong') }}">Hủy bỏ</a>

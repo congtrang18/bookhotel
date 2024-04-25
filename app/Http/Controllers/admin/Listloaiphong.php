@@ -3,63 +3,80 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\listloaiphong as RequestsListloaiphong;
+use App\Models\admin\loaiphong;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use function Laravel\Prompts\confirm;
+// use function League\Flysystem\Local\unlink;
 
 class Listloaiphong extends Controller
 {
     //
-    
+
     public function index()
     {
-        $listloaiphong = DB::table('loai_phong')->orderBy("id",'desc')
-        ->get();
+        $listloaiphong = new loaiphong();
         // dd($listloaiphong);
         // die;
-        return view("admin/loaiphong/list", ["list" => $listloaiphong]);
+
+        return view("admin/loaiphong/list", ["list" => $listloaiphong->index()]);
     }
     public function delete(Request $request)
     {
-
-        DB::table('loai_phong')->delete($request->id);
+        $xoa = new loaiphong();
+        $xoa->xoa($request->id);
         return redirect()->route("listloaiphong");
     }
-    public function formedit(Request $request){
-       $edit= DB::table("loai_phong")->where('id',$request->id)->get();
+    public function formedit(Request $request)
+    {
+        $edit = new loaiphong();
 
-        return view("admin/loaiphong/edit",["edit"=>$edit]);
+        return view("admin/loaiphong/edit", ["edit" => $edit->getoneroom($request->id)]);
     }
-    public function update(Request $request){
-        $upload_img="../../../../public/upload_img/".time().$_FILES['avatar'];
-    // Route::get("/formedit",[Listloaiphong::class,"formedit"])->name("formedit");
-        $file=move_uploaded_file($_FILES['avatar']['tmp_name'],$upload_img);
+    public function update(RequestsListloaiphong $request)
+    {
+        $update = new loaiphong();
 
-        dd($file);
-        $data=["ten"=>$request->namedm,"avatar"=>$request->avatar];
-        dd($data);
+        $getoneroom = $update->getoneroom($request->id);
+        $imageName = "";
+        if (!$request->hasFile("avatar")) {
+            $imageName = $getoneroom[0]->avatar;
+        } else {
+
+            unlink(public_path("upload_img/") . $getoneroom[0]->avatar);
+            // unlink()
+            $image = $request->file('avatar');
+            $imageName = time() . '.' . $image->getClientOriginalName();
+
+            $image->move(public_path('upload_img'), $imageName);
+            // dd($upload);
+
+            // dd($db);
+        }
+        $data = ["ten" => "$request->namedm", "avatar" => "$imageName"];
+        $update->capnhat($data, $request->id);
+        // dd($data);
         // dd($request->namedm);
-        $db=DB::table("loai_phong")->update($data);
-        dd($db);
+        return redirect()->route("listloaiphong");
     }
-    public function formadd(){
+    public function formadd()
+    {
         return view("admin/loaiphong/add");
-        
     }
-    public function add(Request $request){
-        // dd();
-        $nameimg=$request->file('avatar')->getClientOriginalName();
-        $img=$request->file('avatar')->storeAs('public/upload_img',time()."$nameimg");
-        $data=["ten"=>"$request->namedm","avatar"=>"$img"];
-        // dd();
-// dd($data);
+    public function add(RequestsListloaiphong $request)
+    {
+        $add = new loaiphong();
+        $image = $request->file('avatar');
+        $imageName = time() . '.' . $image->getClientOriginalName();
+        $image->move(public_path('upload_img'), $imageName);
+        // dd($upload);
+        $data = ["ten" => "$request->namedm", "avatar" => "$imageName"];
 
-        DB::table('loai_phong')->insert($data);
-        
+        // DB::table('loai_phong')->insert($data);
+        $add->add($data);
         // return view("admin/loaiphong/add");
         return redirect()->route("listloaiphong");
-
-        
     }
 }

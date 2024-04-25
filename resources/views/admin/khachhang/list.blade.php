@@ -1,9 +1,12 @@
 @extends('admin/index')
+@section('title')
+    Danh sách khách hàng
+@endsection
 @section('content')
 <main class="app-content">
   <div class="app-title">
       <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item active"><a href="#"><b>Danh sách danh mục</b></a></li>
+          <li class="breadcrumb-item active"><a href="#"><b>Danh sách khách hàng</b></a></li>
       </ul>
       <div id="clock"></div>
   </div>
@@ -12,11 +15,11 @@
           <div class="tile">
               <div class="tile-body">
                   <div class="row element-button">
-                      <div class="col-sm-2">
+                      {{-- <div class="col-sm-2">
 
-                          <a class="btn btn-add btn-sm" href="{{ route('formadd') }}" title="Thêm"><i class="fas fa-plus"></i>
-                              Tạo mới danh mục</a>
-                      </div>
+                          <a class="btn btn-add btn-sm" href="{{ route('formaddphong') }}" title="Thêm"><i class="fas fa-plus"></i>
+                              Tạo mới Phòng</a>
+                      </div> --}}
 
                   
                   </div>
@@ -25,25 +28,35 @@
                           <tr>
                               <th width="10"><input type="checkbox" id="all"></th>
                               <th>STT</th>
-                              <th>Tên danh mục</th>
-                              <th>Hình ảnh danh mục</th>
+                              <th>Tên </th>
+                              <th>avatar</th>
+                              <th>số điện thoại</th>
+                              <th>email</th>
+                              <th>Địa chỉ</th>
+                              <th>Role</th>
                               <th>Chức năng</th>
-
                           </tr>
 
                       </thead>
                       <tbody>
-                        @foreach ($list as $key => $item)
+                        @foreach ($listkhachhang as $key => $item)
                         <tr>
                           <th width="10"><input type="checkbox" id="all"></th>
                           <td>{{$key+1}}</td>
                           <td>{{$item->ten}}</td>
-                          <td><img src="../upload_img/{{$item->avatar}}" style="width: 150px;" alt=""></td>
+                          <td>{{$item->avatar}}</td>
+                          <td>{{$item->sdt}}</td>
+                          <td>{{$item->email}}</td>
+                          <td>{{$item->dia_chi}}</td>
+                          <td>{{$item->role}}</td>
+                       
+
+                         
                           <td colspan="2">
-                            <a href="{{ route('formedit', ['id'=>$item->id]) }}"  class="btn btn-warning">
+                            <a href="{{ route('formeditkhachhang', ['id'=>$item->id]) }}"  class="btn btn-warning">
                                     <i class="fas fa-edit"></i> 
                                 </a>
-                            <a onclick="return confirm('bạn chắc chắn muốn xóa không')" href="{{ route('delete', ['id'=>$item->id]) }}" class="btn btn-danger">
+                            <a onclick="return confirm('bạn chắc chắn muốn xóa không')" href="{{ route('deletephong', ['id'=>$item->id]) }}" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i></a>
                         </td>
 

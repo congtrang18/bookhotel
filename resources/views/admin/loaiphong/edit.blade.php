@@ -19,9 +19,15 @@
                 <div class="form-group col-md-3">
                   <label class="control-label">Tên danh mục</label>
                   <input class="form-control mb-3" value="{{$edit[0]->ten}}" name="namedm" type="text">
+                  @error('namedm')
+                      <span style="color: red">{{$message}}</span>
+                  @enderror
                   <label class="control-label">Ảnh</label>
                   <input class="form-control mb-3"  name="avatar" type="file">
-                  <img style="width: 100px;" src="{{$edit[0]->avatar}}" alt="">
+                  @error('avatar')
+                      <span style="color: red">{{$message}}</span>
+                  @enderror
+                  <img style="width: 100px;" src="../upload_img/{{$edit[0]->avatar}}" alt="">
                   <div class="mt-3">
                     <button class="btn btn-save" type="submit" name="btnsubmit">Lưu lại</button>
                   <a class="btn btn-cancel" href="{{ route('listloaiphong') }}">Hủy bỏ</a>
