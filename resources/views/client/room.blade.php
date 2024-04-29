@@ -12,80 +12,171 @@
         <!-- END-BANNER -->
 @endsection
 @section('content')
-    <!-- BODY-ROOM-5 -->
-    <section class="body-room-6">
-        <div class="container">
-            <div class="wrap-room-6">
-                <div class="wrap-item ">
-                    <div class="img">
-                        <img src="landing/html/skyline/demo/images/Room/room-34.jpg" alt="#">
-                    </div>
-                    <div class="text">
-                        <h2 class="h2-rooms">LUXURY ROOM</h2>
-                        <h5 class="h5-room">Start form $120 per day</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <ul>
-                            <li>Max: 4 Person(s)</li>
-                            <li>Size: 35 m2 / 376 ft2</li>
-                            <li>View: Ocean</li>
-                            <li>Bed: King-size or twin beds</li>
-                        </ul>
-                        <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
-                    </div>
-                </div>
-                <div class="wrap-item ">
-                    <div class="img">
-                        <img src="landing/html/skyline/demo/images/Room/room-35.jpg" alt="#">
-                    </div>
-                    <div class="text-1">
-                        <h2 class="h2-rooms">FAMILY ROOM</h2>
-                        <h5 class="h5-room">Start form $120 per day</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <ul>
-                            <li>Max: 4 Person(s)</li>
-                            <li>View: Ocean</li>
-                            <li>Size: 35 m2 / 376 ft2</li>
-                            <li>Bed: King-size or twin beds</li>
-                        </ul>
-                        <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+   <!-- BODY-ROOM-5 -->
+   <section class="body-room-5">
+    <div class="container">
+        <div class="wrap-room-5">
+            <div class="row">
+                @foreach ($listphong as $item)
+                @dd($item);
+                @disabled(true)
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">STANDARD ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">STANDARD ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="wrap-item ">
-                    <div class="img">
-                        <img src="landing/html/skyline/demo/images/Room/room-36.jpg" alt="#">
-                    </div>
-                    <div class="text">
-                        <h2 class="h2-rooms">COUPLE ROOM</h2>
-                        <h5 class="h5-room">Start form $120 per day</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <ul>
-                            <li>Max: 4 Person(s)</li>
-                            <li>Size: 35 m2 / 376 ft2</li>
-                            <li>View: Ocean</li>
-                            <li>Bed: King-size or twin beds</li>
-                        </ul>
-                        <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
-                    </div>
-                </div>
-                <div class="wrap-item ">
-                    <div class="img">
-                        <img src="landing/html/skyline/demo/images/Room/room-37.jpg" alt="#">
-                    </div>
-                    <div class="text-1">
-                        <h2 class="h2-rooms">STANDARD ROOM</h2>
-                        <h5 class="h5-room">Start form $120 per day</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <ul>
-                            <li>Max: 4 Person(s)</li>
-                            <li>View: Ocean</li>
-                            <li>Size: 35 m2 / 376 ft2</li>
-                            <li>Bed: King-size or twin beds</li>
-                        </ul>
-                        <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                @endforeach
+               
+                {{-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-27.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">FAMILY ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">FAMILY ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-28.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">COUPLE ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">COUPLE ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-29.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">STANDARD ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">STANDARD ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-30.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">STANDARD ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">STANDARD ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-31.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">FAMILY ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">FAMILY ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-32.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">COUPLE ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">COUPLE ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="wrap-item ">
+                        <div class="img">
+                            <img src="images/Room/room-33.jpg" alt="#" class="img-responsive">
+                        </div>
+                        <div class="text-room-5">
+                            <h2 class="h2-rooms">FAMILY ROOM</h2>
+                            <h5 class="h5-room">Start form $120 per day</h5>
+                        </div>
+                        <div class="text-hover">
+                            <div class="text">
+                                <h2 class="h2-rooms">FAMILY ROOM</h2>
+                                <h5 class="h5-room">Start form $120 per day</h5>
+                                <p>Lorem Ipsum is simply dummy text of the <b>printing</b> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since <b>the 1500s</b>, when an unknown printer took a <b>gallery</b> of type and scrambled it to make a type specimen book ...</p>
+                                <a href="#" class="view-dateails btn btn-room">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
         </div>
-    </section>
-    <!-- END/BODY-ROOM-5-->
+    </div>
+</section>
+<!-- END/BODY-ROOM-5-->
 @endsection

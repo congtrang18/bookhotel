@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\admin\danhgiaController;
 use App\Http\Controllers\admin\khachhangController;
 use App\Http\Controllers\admin\Listloaiphong;
 use App\Http\Controllers\admin\phong;
+use App\Http\Controllers\user\phongController;
+use App\Http\Controllers\user\trangchuController;
 use App\Models\admin\khachhangModel;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('client/trangchu');
-});
+Route::get('/',[trangchuController::class,"trangchu"])->name("trangchu");
 Route::get('/detail', function () {
     return view('client/detail');
 });
@@ -18,9 +19,7 @@ Route::get('/login', function () {
 Route::get('/dangky', function () {
     return view('client/login');
 });
-Route::get('/room', function () {
-    return view('client/room');
-});
+Route::get('/room', [phongController::class,"listphong"])->name("room");
 Route::get('/feedback', function () {
     return view('client/feeback');
 });
@@ -53,7 +52,9 @@ Route::prefix("/admin")->group(function () {
     Route::post("/updatekhachhang", [khachhangController::class, "updatekhachhang"])->name("updatekhachhang");
 
     // đánh giá
-    // Route::get("/danhgia", [danhgiaController::class, "danhgia"])->name("danhgia");
+    Route::get("/danhgia", [danhgiaController::class, "danhgia"])->name("danhgia");
+    Route::get("/deletedanhgia", [danhgiaController::class, "xoadanhgia"])->name("deletedanhgia");
+
 
 
 });

@@ -32,9 +32,15 @@ class phong extends Controller
 
     public function addphong(RequestsPhong $request)
     {
-        // dd($request->request);
+        $name = time() . $_FILES['imgroom']['name'];
+        $upload_img = public_path("upload_img/") . $name;
+        // dd($upload_img);
+        // die;
+        move_uploaded_file($_FILES['imgroom']['tmp_name'], $upload_img);
+
         $data = [
             'ten' => $request->ten,
+            'imgroom' => $name,
             'gia' => $request->gia,
             'dien_tich' => $request->dien_tich,
             'huong_nhin' => $request->huong_nhin,
@@ -52,18 +58,31 @@ class phong extends Controller
         DB::table('phong')->delete($request->id);
         return redirect()->route("phong");
     }
-    public function formeditphong(Request $request){
+    public function formeditphong(Request $request)
+    {
         // $this->phong->editroom($request->id);
-        return view("admin.phong.edit", ['editphong' =>  $this->phong->editroom($request->id),
-        "loaiphong"=>$this->phong->danhmucloaiphong()]);
-        
+        return view("admin.phong.edit", [
+            'editphong' =>  $this->phong->editroom($request->id),
+            "loaiphong" => $this->phong->danhmucloaiphong()
+        ]);
     }
-    public function capnhat(RequestsPhong $request){
-        
-// dd($request);
-// die;
+    public function capnhat(RequestsPhong $request)
+    {
+        $dataold= $this->phong->editroom($request->id);
+        // dd($dataold);
+        if ($_FILES['imgroom']['name'] == '') {
+            $img = $dataold[0]->imgroom;
+           
+        }else{
+            unlink($dataold[0]->imgroom);
+            $img=time().$_FILES['imgroom']['name'];
+            $upload_img=public_path("upload_img/").$img;
+            move_uploaded_file($_FILES['imgroom']['tmp_name'],$upload_img);
+        }
+
         $data = [
             'ten' => $request->ten,
+            'imgroom'=>$img,
             'gia' => $request->gia,
             'dien_tich' => $request->dien_tich,
             'huong_nhin' => $request->huong_nhin,
@@ -72,12 +91,11 @@ class phong extends Controller
             'mo_ta' => $request->mo_ta,
             'id_loai_phong' => $request->id_loai_phong,
         ];
-        $this->phong->capnhat($data,$request->id);
+        $this->phong->capnhat($data, $request->id);
         // dd($data);
         // die;
-    //    dd( $this->phong->capnhat($data,$request->id));
-    //    die;
+        //    dd( $this->phong->capnhat($data,$request->id));
+        //    die;
         return redirect()->route("phong");
     }
-    
 }

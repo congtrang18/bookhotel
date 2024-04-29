@@ -29,6 +29,12 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-md-3">
+                                    <label class="control-label">ảnh phòng</label>
+                                    <input class="form-control mb-3" value="{{ $editphong[0]->imgroom }}" name="imgroom"
+                                        type="file">
+                                   <span><img src="../upload_img/{{$editphong[0]->imgroom}}" style="width: 70%;height: 50%;" alt=""></span>
+                                </div>
 
                                 <div class="col-md-3">
                                     <label class="control-label">Giá phòng</label>
@@ -46,6 +52,9 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
+                               
+                            </div>
+                            <div class="row">
                                 <div class="col-md-3">
                                     <label class="control-label">Hướng nhìn phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->huong_nhin }}"
@@ -54,8 +63,6 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-3">
                                     <label class="control-label">Giường</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->giuong }}" name="giuong"
@@ -72,15 +79,7 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="control-label">mô tả</label>
-                                    <textarea class="form-control" name="mo_ta" id="" cols="30" rows="10">
-                                        {{ $editphong[0]->mo_ta }}
-                                    </textarea>
-                                    @error('mo_ta')
-                                        <span style="color: red">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                               
                                 <div class="col-md-3">
                                     <label class="control-label">Loại phòng</label>
                                     <select name="id_loai_phong" id="" class="form-select form-control">
@@ -91,6 +90,19 @@
                                             @endif
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+                                        <label class="control-label">mô tả</label>
+                                        <textarea class="form-control" name="mo_ta" id="" cols="30" rows="10">
+                                            {{ $editphong[0]->mo_ta }}
+                                        </textarea>
+                                        @error('mo_ta')
+                                            <span style="color: red">{{ $message }}</span>
+                                        @enderror
+                                    
                                 </div>
                             </div>
 

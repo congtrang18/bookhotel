@@ -17,6 +17,11 @@ class danhgiaController extends Controller
         $this->danhgia=new danhgiaModel();
     }
     public function danhgia(){
-        // return view("admin.dan")
+        return view("admin.danhgia.list",['listdanhgia'=>$this->danhgia->danhgia()]);
+    }
+    public function xoadanhgia(Request $request){
+      
+        $this->danhgia->xoa($request->id);
+        return redirect()->route("danhgia");
     }
 }
