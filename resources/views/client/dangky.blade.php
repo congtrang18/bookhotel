@@ -5,24 +5,42 @@
  <section class="body-page page-v1 page-v2">
     <div class="container">
         <div class="content">
-            <h2 class="sky-h3">REGISTER FORM</h2>
-            <h5 class="p-v1">If you no have account in The Lotus Hotel! Register and feeling</h5>
-            <form>
+            <h2 class="sky-h3">Đăng kí</h2>
+            
+            <form method="post" enctype="multipart/form-data" action="{{ route('dangky') }}" >
                 <div class="form-group">
-                    <input type="text" class="form-control" name="name" value="" placeholder="User Name *">
+                    <input type="text" class="form-control" name="ten" value="{{old("ten")}}" placeholder="Tên">
+                    @error('ten')
+                        <span style="color: red">{{$message}}</span>
+                    @enderror
+                </div>
+                {{-- <div class="form-group">
+                    <input type="text" class="form-control" name="sdt" value="{{old("sdt")}}" placeholder="Số điện thoại">
+                    @error('sdt')
+                        <span style="color: red">{{$message}}</span>
+                    @enderror
+                </div> --}}
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control" value="{{old("email")}}"  title="" placeholder="Email *">
+                    @error('email')
+                    <span style="color: red">{{$message}}</span>
+                @enderror
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" value="" required="required" title="" placeholder="Email *">
-                </div>
-                <div class="form-group">
-                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Password *">
+                    <input id="password-field" value="{{old("mat_khau")}}" type="password" class="form-control" name="mat_khau" placeholder="mật khẩu *">
                     <span data-toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    @error('mat_khau')
+                    <span style="color: red">{{$message}}</span>
+                @enderror
                 </div>
                 <div class="form-group">
-                    <input id="password-field1" type="password" class="form-control" name="password" placeholder="Confirm Password *">
-                    <span data-toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    <input type="file" class="form-control" name="avatar" value="" placeholder="img">
+                    @error('avatar')
+                    <span style="color: red">{{$message}}</span>
+                @enderror
                 </div>
-                <button type="submit" class="btn btn-default">REGISTER</button>
+                <button type="submit" class="btn btn-default">Đăng Kí</button>
+                @csrf
             </form>
         </div>
     </div>

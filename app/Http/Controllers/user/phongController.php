@@ -14,7 +14,17 @@ class phongController extends Controller
         $this->phong=new phongModel();
     }
     public function listphong(Request $request){
+        
         return view("client.room",["listphong"=>$this->phong->phong($request->id)]);
     }
+    public function detailPhong(Request $request){
+        return view("client.detail",["detailanhphong"=>$this->phong->detailanhphong($request->id),
+        "tenphong"=>$this->phong->tenphong($request->id),
+        "detailphong"=>$this->phong->detailphong($request->id),
+        "phonglienquan"=>$this->phong->phonglienquan($request->id,$request->idloaiphong)
+    ]);
+
+    }
+   
     
 }

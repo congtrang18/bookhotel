@@ -29,6 +29,30 @@ class phong extends Controller
 
         return view("admin.phong.add", ['loaiphong' => $loaiphong]);
     }
+    public function formaddanhphong(Request $request)
+    {
+
+
+        return view("admin.phong.addanhphong", ['id' => $request->id]);
+    }
+    public function addanhphong(Request $request)
+    {
+        $id = $request->id;
+        foreach ($_FILES['anh']['tmp_name'] as $key => $item) {
+            $name = time() . $_FILES['anh']['name'][$key];
+            $upload_img = public_path("upload_img/") . $name;
+            move_uploaded_file($_FILES['anh']['tmp_name'][$key], $upload_img);
+            $data = [
+                'id_phong' => $id,
+                'anh_phongs' => $name
+            ];
+            $this->phong->chitietphong($data);
+        }
+        return redirect()->route("phong");
+
+
+        //    
+    }
 
     public function addphong(RequestsPhong $request)
     {
@@ -68,21 +92,20 @@ class phong extends Controller
     }
     public function capnhat(RequestsPhong $request)
     {
-        $dataold= $this->phong->editroom($request->id);
+        $dataold = $this->phong->editroom($request->id);
         // dd($dataold);
         if ($_FILES['imgroom']['name'] == '') {
             $img = $dataold[0]->imgroom;
-           
-        }else{
-            unlink($dataold[0]->imgroom);
-            $img=time().$_FILES['imgroom']['name'];
-            $upload_img=public_path("upload_img/").$img;
-            move_uploaded_file($_FILES['imgroom']['tmp_name'],$upload_img);
+        } else {
+            unlink(public_path("upload_img/") . $dataold[0]->imgroom);
+            $img = time() . $_FILES['imgroom']['name'];
+            $upload_img = public_path("upload_img/") . $img;
+            move_uploaded_file($_FILES['imgroom']['tmp_name'], $upload_img);
         }
 
         $data = [
             'ten' => $request->ten,
-            'imgroom'=>$img,
+            'imgroom' => $img,
             'gia' => $request->gia,
             'dien_tich' => $request->dien_tich,
             'huong_nhin' => $request->huong_nhin,

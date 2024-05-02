@@ -90,7 +90,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
-                    Copyright © 2017 by <a href="#" title="">EngoTheme.</a> SkyLine Hotel Theme crafted with love
+                   Bản quyền của <a href="https://www.facebook.com/profile.php?id=100053425807466" title="">Nguyễn Công Trang.</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
                     <div class="payments text-right">

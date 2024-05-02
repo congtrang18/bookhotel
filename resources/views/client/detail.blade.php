@@ -1,15 +1,17 @@
-
 @extends('index')
+@section('title')
+    Chi Tiết
+@endsection
 @section('content')
 @section('slider')
-<section class="banner-tems text-center">
-    <div class="container">
-        <div class="banner-content">
-            <h2>LUXURY ROOM</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing</p>
+    <section class="banner-tems text-center">
+        <div class="container">
+            <div class="banner-content">
+                <h2>{{ $tenphong[0]->ten_phong }}</h2>
+                <p>{{ $tenphong[0]->ten_loai_phong }}</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 @endsection
 <!-- ROOM DETAIL -->
 <section class="section-product-detail">
@@ -21,66 +23,16 @@
                     <!-- LAGER IMGAE -->
                     <div class="wrapper">
                         <div class="gallery3">
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                             </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-1.jpg" alt="images/Product/img-1.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  current">
-                                <span class="">
-                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry 1
-                                 </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-2.jpg" alt="images/Product/img-2.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry 2
-                                 </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-3.jpg" alt="images/Product/img-3.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry 3
-                                 </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-4.jpg" alt="images/Product/img-4.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry 4
-                                  </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-5.jpg" alt="images/Product/img-5.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry 5
-                             </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-6.jpg" alt="images/Product/img-6.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry 6
-                               </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-7.jpg" alt="images/Product/img-7.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                  Lorem Ipsum is simply dummy text of the printing and typesetting industry 7
-                              </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-7.jpg" alt="images/Product/img-7.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry 8
-                                </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-7.jpg" alt="images/Product/img-7.jpg" class="">
-                            </div>
-                            <div class="gallery__img-block  ">
-                                <span class="">
-                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry 9
-                               </span>
-                                <img src="landing/html/skyline/demo/images/Product/img-7.jpg" alt="images/Product/img-7.jpg" class="">
-                            </div>
+                            @foreach ($detailanhphong as $item)
+                                <div class="gallery__img-block  ">
+                                    <span class="">
+                                        {{ $item->ten }}
+                                    </span>
+                                    <img src="upload_img/{{ $item->anh_phongs }}"
+                                        alt="upload_img/{{ $item->anh_phongs }}" class="">
+                                </div>
+                            @endforeach
+
                             <div class="gallery__controls">
                             </div>
                         </div>
@@ -91,7 +43,8 @@
                     <!-- FORM BOOK -->
                     <div class="product-detail_book">
                         <div class="product-detail_total">
-                            <img src="landing/html/skyline/demo/images/Product/icon.png" alt="#" class="icon-logo">
+                            <img src="landing/html/skyline/demo/images/Product/icon.png" alt="#"
+                                class="icon-logo">
                             <h6>STARTING ROOM FROM</h6>
                             <p class="price">
                                 <span class="amout">$330</span> /days
@@ -104,16 +57,22 @@
                                     <div class="check_availability">
                                         <div class="check_availability-field">
                                             <label>Arrive</label>
-                                            <div class="input-group date" data-date-format="dd-mm-yyyy" id="datepicker1">
-                                                <input class="form-control wrap-box" type="text" placeholder="Arrival Date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"  aria-hidden="true"></i></span>
+                                            <div class="input-group date" data-date-format="dd-mm-yyyy"
+                                                id="datepicker1">
+                                                <input class="form-control wrap-box" type="text"
+                                                    placeholder="Arrival Date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"
+                                                        aria-hidden="true"></i></span>
                                             </div>
                                         </div>
                                         <div class="check_availability-field">
                                             <label>Depature</label>
-                                            <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
-                                                <input class="form-control wrap-box" type="text" placeholder="Departure Date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            <div id="datepicker2" class="input-group date"
+                                                data-date-format="dd-mm-yyyy">
+                                                <input class="form-control wrap-box" type="text"
+                                                    placeholder="Departure Date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"
+                                                        aria-hidden="true"></i></span>
                                             </div>
                                         </div>
                                         <div class="check_availability-field">
@@ -151,11 +110,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <ul class="product-detail_tab-header">
-                        <li><a href="#overview" data-toggle="tab">OVERVIEW</a></li>
-                        <li class="active"><a href="#amenities" data-toggle="tab">amenities</a></li>
-                        <li><a href="#package" data-toggle="tab">PACKAGE</a></li>
-                        <li><a href="#rates" data-toggle="tab">RATES</a></li>
-                        <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+                        <li><a href="#overview" data-toggle="tab">Tổng Quan</a></li>
+                        <li class="active"><a href="#amenities" data-toggle="tab">Tiện Nghi</a></li>
+                        <li><a href="#package" data-toggle="tab">Bưu Kiện</a></li>
+                        <li><a href="#rates" data-toggle="tab">Giá</a></li>
+                        <li><a href="#calendar" data-toggle="tab">Lịch</a></li>
                     </ul>
                 </div>
                 <div class="col-md-9">
@@ -163,88 +122,80 @@
                         <!-- OVERVIEW -->
                         <div class="tab-pane fade" id="overview">
                             <div class="product-detail_overview">
-                                <h5 class='text-uppercase
-                    '>de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h5>
-                                <p>Located in the heart of Aspen with a unique blend of contemporary luxury and historic heritage, deluxe accommodations, superb amenities, genuine hospitality and dedicated service for an elevated experience in the Rocky Mountains.</p>
+
+
+
+                                <h5 class='text-uppercase'>
+                                    {{ $detailphong[0]->ten }}
+                                </h5>
+                                <p>{{ $detailphong[0]->mo_ta }}</p>
                                 <div class="row">
                                     <div class="col-xs-6 col-md-4">
-                                        <h6>SPECIAL ROOM</h6>
+                                        <h6>Phòng Đặc Biệt</h6>
                                         <ul>
-                                            <li>Max: 4 Person(s)</li>
-                                            <li>Size: 35 m2 / 376 ft2</li>
-                                            <li>View: Ocen</li>
-                                            <li>Bed: King-size or twin beds</li>
+                                            <li>Tối đa: {{ $detailphong[0]->sl_nguoi }} người</li>
+                                            <li>Kích thước: {{ $detailphong[0]->dien_tich }} m2</li>
+                                            <li>Lượt xem: {{ $detailphong[0]->luot_xem }}</li>
+                                            <li>Giường: {{ $detailphong[0]->giuong }}</li>
                                         </ul>
                                     </div>
                                     <div class="col-xs-6 col-md-4">
-                                        <h6>SERVICE ROOM</h6>
+                                        <h6>Phòng Dịch Vụ</h6>
                                         <ul>
-                                            <li>Oversized work desk</li>
-                                            <li>Hairdryer</li>
-                                            <li>Iron/ironing board upon request</li>
+                                            <li>Bàn làm việc ngoại cỡ</li>
+                                            <li>Máy sấy</li>
+                                            <li>Bàn là</li>
                                         </ul>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <!-- END / OVERVIEW -->
                         <!-- AMENITIES -->
                         <div class="tab-pane fade active in" id="amenities">
                             <div class="product-detail_amenities">
-                                <p>Located in the heart of Aspen with a unique blend of contemporary luxury and historic heritage, deluxe accommodations, superb amenities, genuine hospitality and dedicated service for an elevated experience in the Rocky Mountains.</p>
+
                                 <div class="row">
                                     <div class="col-xs-6 col-lg-4">
-                                        <h6>LIVING ROOM</h6>
+                                        <h6>Phòng Khách</h6>
                                         <ul>
-                                            <li>Oversized work desk</li>
-                                            <li>Hairdryer</li>
-                                            <li>Iron/ironing board upon request</li>
+                                            <li>Bàn làm việc ngoại cỡ</li>
+
+                                            <li> Máy sấy tóc</li>
+                                            <li> Bàn ủi/bàn ủi theo yêu cầu</li>
+
                                         </ul>
                                     </div>
                                     <div class="col-xs-6 col-lg-4">
-                                        <h6>KITCHEN ROOM</h6>
+                                        <h6>Phòng Bếp</h6>
                                         <ul>
-                                            <li>AM/FM clock radio</li>
-                                            <li>Voicemail</li>
-                                            <li>High-speed Internet access</li>
+                                            <li>Bếp nướng/nẩu</li>
+                                            <li>Bếp gas</li>
+                                        </ul>
+                                    </div>
+                                   
+                                    <div class="col-xs-6 col-lg-4">
+                                        <h6>Phòng Ngủ</h6>
+                                        <ul>
+                                            <li>Máy Pha cà phê</li>
+                                            <li>Tivi 25 inch</li>
+                                            <li>Giường tình yêu</li>
+                                            <li>Điều hòa</li>
                                         </ul>
                                     </div>
                                     <div class="col-xs-6 col-lg-4">
-                                        <h6>balcony</h6>
+                                        <h6>Phòng Tắm</h6>
                                         <ul>
-                                            <li>AM/FM clock radio</li>
-                                            <li>Voicemail</li>
-                                            <li>High-speed Internet access</li>
+                                            <li>Bồn tắm</li>
+                                            <li>Bình nóng lạnh</li>
+
+                                            <li>Máy sấy</li>
+                                            <li>Tủ </li>
+                                            <li>Móc quần áo</li>
                                         </ul>
                                     </div>
-                                    <div class="col-xs-6 col-lg-4">
-                                        <h6>bedroom</h6>
-                                        <ul>
-                                            <li>Coffee maker</li>
-                                            <li>25 inch or larger TV</li>
-                                            <li>Cable/satellite TV channels</li>
-                                            <li>AM/FM clock radio</li>
-                                            <li>Voicemail</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-xs-6 col-lg-4">
-                                        <h6>bathroom</h6>
-                                        <ul>
-                                            <li>Dataport</li>
-                                            <li>Phone access fees waived</li>
-                                            <li>24-hour Concierge service</li>
-                                            <li>Private concierge</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-xs-6 col-lg-4">
-                                        <h6>Oversized work desk</h6>
-                                        <ul>
-                                            <li>Dataport</li>
-                                            <li>Phone access fees waived</li>
-                                            <li>24-hour Concierge service</li>
-                                            <li>Private concierge</li>
-                                        </ul>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -252,11 +203,13 @@
                         <!-- PACKAGE -->
                         <div class="tab-pane fade" id="package">
                             <div class="product-detail_package">
-                                <!-- ITEM package -->
+                                <!-- detailphong package -->
                                 <div class="product-package_item">
                                     <div class="text">
                                         <h4><a href="#">package standar</a></h4>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                                            1500s, when an unknown printer took a galley of type and scrambled</p>
                                         <div class="product-package_price">
                                             <p class="price">
                                                 <span class="amout">$260</span> / Package
@@ -270,7 +223,9 @@
                                 <div class="product-package_item">
                                     <div class="text">
                                         <h4><a href="#">package standar</a></h4>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                                            1500s, when an unknown printer took a galley of type and scrambled</p>
                                         <div class="product-package_price">
                                             <p class="price">
                                                 <span class="amout">$340</span> / Package
@@ -284,7 +239,9 @@
                                 <div class="product-package_item">
                                     <div class="text">
                                         <h4><a href="#">package standar</a></h4>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                                            1500s, when an unknown printer took a galley of type and scrambled</p>
                                         <div class="product-package_price">
                                             <p class="price">
                                                 <span class="amout">$420</span> / Package
@@ -396,7 +353,8 @@
                                         <div class="calendar_title">
                                             <span class="calendar_month">JUNE</span>
                                             <span class="calendar_year">2017</span>
-                                            <a href="#" class="calendar_prev calendar_corner"><i class="ion-ios-arrow-thin-left"></i></a>
+                                            <a href="#" class="calendar_prev calendar_corner"><i
+                                                    class="ion-ios-arrow-thin-left"></i></a>
                                         </div>
                                         <table class="calendar_tabel">
                                             <thead>
@@ -426,8 +384,10 @@
                                                 <td><a href="#"><small>8</small></a></td>
                                                 <td><a href="#"><small>9</small></a></td>
                                                 <td><a href="#"><small>10</small></a></td>
-                                                <td class="apb-calendar_current-select"><a href="#"><small>11</small></a></td>
-                                                <td class="apb-calendar_current-select"><a href="#"><small>12</small></a></td>
+                                                <td class="apb-calendar_current-select"><a
+                                                        href="#"><small>11</small></a></td>
+                                                <td class="apb-calendar_current-select"><a
+                                                        href="#"><small>12</small></a></td>
                                                 <td><a href="#"><small>13</small></a></td>
                                             </tr>
                                             <tr>
@@ -467,7 +427,8 @@
                                         <div class="calendar_title">
                                             <span class="calendar_month">JUNE</span>
                                             <span class="calendar_year">2017</span>
-                                            <a href="#" class="calendar_next calendar_corner"><i class="ion-ios-arrow-thin-right"></i></a>
+                                            <a href="#" class="calendar_next calendar_corner"><i
+                                                    class="ion-ios-arrow-thin-right"></i></a>
                                         </div>
                                         <table class="calendar_tabel">
                                             <thead>
@@ -497,8 +458,10 @@
                                                 <td><a href="#"><small>8</small></a></td>
                                                 <td><a href="#"><small>9</small></a></td>
                                                 <td><a href="#"><small>10</small></a></td>
-                                                <td class="apb-calendar_current-select"><a href="#"><small>11</small></a></td>
-                                                <td class="apb-calendar_current-select"><a href="#"><small>12</small></a></td>
+                                                <td class="apb-calendar_current-select"><a
+                                                        href="#"><small>11</small></a></td>
+                                                <td class="apb-calendar_current-select"><a
+                                                        href="#"><small>12</small></a></td>
                                                 <td><a href="#"><small>13</small></a></td>
                                             </tr>
                                             <tr>
@@ -546,81 +509,36 @@
         <!-- END / TAB -->
         <!-- ANOTHER ACCOMMODATION -->
         <div class="product-detail">
-            <h2 class="product-detail_title">Another accommodations</h2>
+            <h2 class="product-detail_title">Chỗ ở khác</h2>
+            {{-- @dd($phonglienquan) --}}
             <div class="product-detail_content">
                 <div class="row">
                     <!-- ITEM -->
-                    <div class="col-sm-6 col-md-3 col-lg-3">
-                        <div class="product-detail_item">
-                            <div class="img">
-                                <a href="#"><img src="landing/html/skyline/demo/images/Product/Another-.jpg" alt="#"></a>
-                            </div>
-                            <div class="text">
-                                <h2><a href="#">LUxury room</a></h2>
-                                <ul>
-                                    <li><i class="fa fa-child" aria-hidden="true"></i> Max: 2 Person(s)</li>
-                                    <li><i class="fa fa-bed" aria-hidden="true"></i> Bed: King-size or twin beds</li>
-                                    <li><i class="fa fa-eye" aria-hidden="true"></i> View: Ocen</li>
-                                </ul>
-                                <a href="#" class="btn btn-room">VIEW DETAIL</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END / ITEM -->
-                    <!-- ITEM -->
-                    <div class="col-sm-6 col-md-3 col-lg-3">
-                        <div class="product-detail_item">
-                            <div class="img">
-                                <a href="#"><img src="landing/html/skyline/demo/images/Product/Another-1.jpg" alt="#"></a>
-                            </div>
-                            <div class="text">
-                                <h2><a href="#">Family Room</a></h2>
-                                <ul>
-                                    <li><i class="fa fa-child" aria-hidden="true"></i> Max: 2 Person(s)</li>
-                                    <li><i class="fa fa-bed" aria-hidden="true"></i> Bed: King-size or twin beds</li>
-                                    <li><i class="fa fa-eye" aria-hidden="true"></i> View: Ocen</li>
-                                </ul>
-                                <a href="#" class="btn btn-room">VIEW DETAIL</a>
+                    @foreach ($phonglienquan as $item)
+                        <div class="col-sm-6 col-md-3 col-lg-3">
+                            <div class="product-detail_item">
+                                <div class="img">
+                                    <a href="#"><img src="upload_img/{{ $item->imgroom }}" alt="#"></a>
+                                </div>
+                                <div class="text">
+                                    <h2><a href="#">{{ $item->ten }}</a></h2>
+                                    <ul>
+                                        <li><i class="fa fa-child" aria-hidden="true"></i> Tối đa:
+                                            {{ $item->sl_nguoi }}</li>
+                                        <li><i class="fa fa-bed" aria-hidden="true"></i> Giường: {{ $item->giuong }}
+                                        </li>
+                                        <li><i class="fa fa-eye" aria-hidden="true"></i>Lượt xem:
+                                            {{ $item->luot_xem }}</li>
+                                    </ul>
+                                    <a href="{{ route('detail', ['id' => $item->id, 'idloaiphong' => $item->id_loai_phong]) }}"
+                                        class="btn btn-room">VIEW DETAIL</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
                     <!-- END / ITEM -->
-                    <!-- ITEM -->
-                    <div class="col-sm-6 col-md-3 col-lg-3">
-                        <div class="product-detail_item">
-                            <div class="img">
-                                <a href="#"><img src="landing/html/skyline/demo/images/Product/Another-3.jpg" alt="#"></a>
-                            </div>
-                            <div class="text">
-                                <h2><a href="#">standard Room</a></h2>
-                                <ul>
-                                    <li><i class="fa fa-child" aria-hidden="true"></i> Max: 2 Person(s)</li>
-                                    <li><i class="fa fa-bed" aria-hidden="true"></i> Bed: King-size or twin beds</li>
-                                    <li><i class="fa fa-eye" aria-hidden="true"></i> View: Ocen</li>
-                                </ul>
-                                <a href="#" class="btn btn-room">VIEW DETAIL</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END / ITEM -->
-                    <!-- ITEM -->
-                    <div class="col-sm-6 col-md-3 col-lg-3">
-                        <div class="product-detail_item">
-                            <div class="img">
-                                <a href="#"><img src="landing/html/skyline/demo/images/Product/Another-4.jpg" alt="#"></a>
-                            </div>
-                            <div class="text">
-                                <h2><a href="#">couple Room</a></h2>
-                                <ul>
-                                    <li><i class="fa fa-child" aria-hidden="true"></i> Max: 2 Person(s)</li>
-                                    <li><i class="fa fa-bed" aria-hidden="true"></i> Bed: King-size or twin beds</li>
-                                    <li><i class="fa fa-eye" aria-hidden="true"></i> View: Ocen</li>
-                                </ul>
-                                <a href="#" class="btn btn-room">VIEW DETAIL</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END / ITEM -->
+
                 </div>
             </div>
         </div>

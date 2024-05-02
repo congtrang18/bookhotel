@@ -12,7 +12,13 @@
             <li><a class="app-menu__item active" href="?act=bangdieukhien"><i class='app-menu__icon bx bx-tachometer'></i><span class="app-menu__label">Bảng điều khiển</span></a></li>
 
 
-            <li><a class="app-menu__item" href="{{ route('listloaiphong') }}"><i class='app-menu__icon bx bx-id-card'></i> <span class="app-menu__label">Quản lý loại phòng</span></a></li>
+            <li>
+                  <a class="app-menu__item" href="{{ route('listloaiphong') }}"><i class='app-menu__icon bx bx-id-card'></i> <span class="app-menu__label">Quản lý loại phòng
+
+                  
+                  </span></a>
+                 
+            </li>
             <li><a class="app-menu__item" href="{{ route('phong') }}"><i class='app-menu__icon bx bx-user-voice'></i><span class="app-menu__label">Quản lý phòng</span></a></li>
             <li><a class="app-menu__item" href="?act=quanlybinhluan"><i class='app-menu__icon bx bx-user-voice'></i><span class="app-menu__label">Quản lý bình luận</span></a></li>
 

@@ -16,7 +16,7 @@
             imgBlockClass: 'gallery__img-block',
             controls: 'thumbnails', // points thumbnails
             controlsClass: 'gallery__controls',
-            thumnailWidth: 90,
+            thumnailWidth: 120,
             thumnaiHeight: 60,
             thumbnailMargin: 15,
             thumbnailAnimation: true,
@@ -24,7 +24,7 @@
             animateSpeed: 1000,
             description: true,
             imgPadding: 15,
-            autoplay: false,
+            autoplay: true,
             autoplayDelay: 5000,
             fullscreen: false,
             transition: 'slide' // slide crossfade slide-blur

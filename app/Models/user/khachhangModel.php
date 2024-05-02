@@ -6,14 +6,14 @@ namespace App\Models\user;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class trangchuModel extends Model
+class khachhangModel extends Model
 {
     // use HasFactory;
-    public function trangchu(){
-        return DB::table("loai_phong")->get();
+ 
+   
+    public function dangky($data){
+        // dd($data);
+        DB::table('khach_hang')->insert($data);
     }
-    // public function phong(){
-    //     return DB::table("phong")->get();
-    // }
-
+    
 }

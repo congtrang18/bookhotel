@@ -15,6 +15,9 @@ class trangchuController extends Controller
         $this->trangchu=new trangchuModel();
     }
     public function trangchu(){
-        return view("client.trangchu",["listloaiphong"=>$this->trangchu->trangchu()]);
+        return view('client.trangchu',["listloaiphong"=>$this->trangchu->trangchu()]);
     }
+    // public function header(){
+    //     return view('client.layout.header',["listloaiphong"=>$this->trangchu->trangchu()]);
+    // }
 }

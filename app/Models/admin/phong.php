@@ -30,5 +30,8 @@ class phong extends Model
         DB::table("phong")->where('id',$id)->update($data);
         
     }
+    public function chitietphong($data){
+      DB::table("chi_tiet_phong")->insert($data);
+    }
 }
 

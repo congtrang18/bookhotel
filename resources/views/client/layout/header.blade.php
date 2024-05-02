@@ -1,32 +1,18 @@
  <!-- HEADER -->
-
  <header class="header-sky">
     <div class="container">
         <!--HEADER-TOP-->
         <div class="header-top">
             <div class="header-top-left">
                 <span><i class="ion-android-cloud-outline"></i>18 °C</span>
-                <span><i class="ion-ios-location-outline"></i> 121 King Str, Melbourne Victoria</span>
-                <span><i class="fa fa-phone" aria-hidden="true"></i> 1-548-854-8898</span>
+                <span><i class="ion-ios-location-outline"></i> Đan Phượng-Hà Nội</span>
+                <span><i class="fa fa-phone" aria-hidden="true"></i> 0988207698</span>
             </div>
             <div class="header-top-right">
                 <ul>
-                    <li class="dropdown"><a href="login.html" title="LOGIN" class="dropdown-toggle">LOGIN</a></li>
-                    <li class="dropdown"><a href="register.html" title="REGISTER" class="dropdown-toggle">REGISTER</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">USD <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li class="active"><a href="#">USD</a></li>
-                            <li><a href="#">EUR</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">ENG <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li class="active"><a href="#">ENG</a></li>
-                            <li><a href="#">JP</a></li>
-                        </ul>
-                    </li>
+                    <li class="dropdown"><a href="{{ route('formdangnhap') }}" title="LOGIN" class="dropdown-toggle">Đăng Nhập</a></li>
+                    <li class="dropdown"><a href="{{ route('formdangky') }}" title="REGISTER" class="dropdown-toggle">Đăng Kí</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -43,29 +29,23 @@
                         <span class="icon-bar "></span>
                         <span class="icon-bar "></span>
                     </button>
-                    <a class="navbar-brand" href="file:///E:/Xampp/htdocs/skyline/index.html" title="Skyline"><img src="landing/html/skyline/demo/images/Home-1/sky-logo-header.png" alt="#"></a>
+                    <a class="navbar-brand" href="{{ route('trangchu') }}" title="Skyline"><img src="landing/html/skyline/demo/images/Home-1/sky-logo-header.png" alt="#"></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown ">
-                            <a href="index.html" title="Home" class="dropdown-toggle" data-toggle="dropdown">Home<b class="caret"></b></a>
-                            <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                <li><a href="index.html" title="">Home 1</a></li>
-                                <li><a href="index_2.html" title="">Home 2</a></li>
-                                <li><a href="index_3.html" title="">Home 3</a></li>
-                                <li><a href="index_4.html" title="">Home 4</a></li>
-                            </ul>
+                            <a href="{{ route('trangchu') }}" >Trang Chủ</a>
+                           
                         </li>
                         <li class="dropdown ">
-                            <a href="room_1.html" title="Room & Rate" class="dropdown-toggle" data-toggle="dropdown">Room & Rate<b class="caret"></b></a>
+                            <a href="#" title="Room & Rate" class="dropdown-toggle" data-toggle="dropdown">Phòng Và Giá<b class="caret"></b></a>
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                <li><a href="room_1.html" title="">Room 1</a></li>
-                                <li><a href="room_2.html" title="">Room 2</a></li>
-                                <li><a href="room_3.html" title="">Room 3</a></li>
-                                <li><a href="room_4.html" title="">Room 4</a></li>
-                                <li><a href="room_5.html" title="">Room 5</a></li>
-                                <li><a href="room_6.html" title="">Room 6</a></li>
-                                <li><a href="room_detail.html" title="">Room Detail</a></li>
+                                {{-- @foreach ($listloaiphong as $item)
+                                
+                                <li><a href="{{ route('room', ['id'=>$item->id]) }}" title="">{{$item->ten}}</a></li>
+                                    
+                                @endforeach --}}
+                               
                             </ul>
                         </li>
                         <li class="dropdown ">
