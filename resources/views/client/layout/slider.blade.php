@@ -4,16 +4,16 @@
         <div class="item">
             <img alt="Third slide" src="landing/html/skyline/demo/images/Home-1/Slider-v1.jpg" class="img-responsive">
             <div class="carousel-caption">
-                <h1>Welcome to Skyline</h1>
-                <p><span class="line-t"></span>Hotels & Resorts <span class="line-b"></span></p>
+                <h1>chào mừng đến với Skyline</h1>
+                <p><span class="line-t"></span>Khách sạn và khu nghỉ dưỡng <span class="line-b"></span></p>
             </div>
         </div>
         <div class="item">
             <img alt="Third slide" src="landing/html/skyline/demo/images/Home-2/Slider-v2.jpg" class="img-responsive">
             <div class="container">
                 <div class="carousel-caption ">
-                    <h1 class="v2">Enjoy a Luxury  Experience</h1>
-                    <p class="p-v2"><span class="line-t"></span>Hotels & Resorts <span class="line-b"></span></p>
+                    <h1 class="v2">Tận hưởng trải nghiệm sang trọng</h1>
+                    <p class="p-v2"><span class="line-t"></span>Khách sạn và khu nghỉ dưỡng <span class="line-b"></span></p>
                 </div>
             </div>
         </div>
@@ -21,21 +21,21 @@
     <div class="check-avail">
         <div class="container">
             <div class="arrival date-title ">
-                <label>Arrival Date </label>
+                <label>Ngày đến </label>
                 <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
                     <input class="form-control" type="text">
                     <span class="input-group-addon"><img src="landing/html/skyline/demo/images/Home-1/date-icon.png" alt="#"></span>
                 </div>
             </div>
             <div class="departure date-title ">
-                <label>Departure Date </label>
+                <label>ngày khởi hành </label>
                 <div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
                     <input class="form-control" type="text">
                     <span class="input-group-addon"><img src="landing/html/skyline/demo/images/Home-1/date-icon.png" alt="#"></span>
                 </div>
             </div>
             <div class="adults date-title ">
-                <label>Adults</label>
+                <label>người lớn</label>
                 <form>
                     <div class=" carousel-search">
                         <div class="btn-group">
@@ -51,7 +51,7 @@
                 </form>
             </div>
             <div class="children date-title ">
-                <label>Children</label>
+                <label>trẻ em</label>
                 <form>
                     <div class=" carousel-search">
                         <div class="btn-group">
@@ -68,8 +68,7 @@
             </div>
             <div class="find_btn date-title">
                 <div class="text-find">
-                    Check
-                    <br>Availability
+                    tìm kiếm
                 </div>
             </div>
         </div>

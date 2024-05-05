@@ -1,37 +1,45 @@
 <?php
 
-use App\Http\Controllers\admin\danhgiaController;
+use App\Http\Controllers\admin\checkloginAdmin;
+use App\Http\Controllers\user\danhgiaController;
 use App\Http\Controllers\admin\khachhangController;
 use App\Http\Controllers\user\khachhangController as khachhangUser;
 use App\Http\Controllers\admin\Listloaiphong;
 use App\Http\Controllers\admin\phong;
+
 use App\Http\Controllers\user\phongController;
 use App\Http\Controllers\user\trangchuController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[trangchuController::class,"trangchu"])->name("trangchu");
-Route::get('/detail',[phongController::class,'detailPhong'])->name("detail");
-Route::get('/formdangnhap', [khachhangUser::class,'formdangnhap'])->name("formdangnhap");
 
-Route::get('/formdangky', [khachhangUser::class,'formdangky'])->name("formdangky");
-Route::post('/dangky', [khachhangUser::class,'dangky'])->name("dangky");
 
-Route::get('/room', [phongController::class,"listphong"])->name("room");
-Route::get('/feedback', function () {
-    return view('client/feeback');
-});
+Route::get('/', [trangchuController::class, "trangchu"])->name("trangchu");
+Route::get('/detail', [phongController::class, 'detailPhong'])->name("detail");
+Route::get('/formdangnhap', [khachhangUser::class, 'formdangnhap'])->name("formdangnhapuser");
+Route::post('/dangnhap', [khachhangUser::class, 'dangnhap'])->name("dangnhapuser");
+Route::get('/quanlytaikhoan', [khachhangUser::class, 'formquanlytaikhoan'])->name("qltk");
+Route::post('/capnhattaikhoan', [khachhangUser::class, 'quanlytaikhoan'])->name("suatk");
+
+
+Route::get('/dangxuat', [khachhangUser::class, 'dangxuatuser'])->name("dangxuatuser");
+
+
+
+Route::get('/formdangky', [khachhangUser::class, 'formdangky'])->name("formdangky");
+Route::post('/dangky', [khachhangUser::class, 'dangky'])->name("dangky");
+
+Route::get('/room', [phongController::class, "listphong"])->name("room");
+Route::get('/feedback', [danhgiaController::class, 'listdanhgia']);
 
 // admin
-Route::prefix("/admin")->group(function () {
+Route::prefix("/admin")->middleware('checkloginAdmin')->group(function () {
     // dd(asset("/admin/"));
     Route::get("/", function () {
         return view("admin/index");
         // echo 2;
-    });
-    // Route::get("/listloaiphong",function(){
-    //     return view("admin/loaiphong/list");
-    // });
+    })->name('admin');
+
     Route::get("/listloaiphong", [Listloaiphong::class, "index"])->name("listloaiphong");
     Route::get("/delete", [Listloaiphong::class, "delete"])->name("delete");
     Route::get("/formedit", [Listloaiphong::class, "formedit"])->name("formedit");
@@ -56,7 +64,9 @@ Route::prefix("/admin")->group(function () {
     // đánh giá
     Route::get("/danhgia", [danhgiaController::class, "danhgia"])->name("danhgia");
     Route::get("/deletedanhgia", [danhgiaController::class, "xoadanhgia"])->name("deletedanhgia");
-
-
-
 });
+Route::get('/admin/formdangnhap', [checkloginAdmin::class, 'formdangnhap'])->name('formdangnhap');
+Route::post('/admin/dangnhap', [checkloginAdmin::class, 'checklogin'])->middleware('checkloginAdmin')->name('dangnhap');
+Route::get('/admin/quenmk', function () {
+    return view('admin.login.quenmk');
+})->name('quenmk');
