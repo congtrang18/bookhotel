@@ -32,7 +32,7 @@
                     </div>
                     <div class="wrap-input100 validate-input">
                         <input autocomplete="off"  type="password" class="input100" placeholder="Mật khẩu"
-                            name="mat_khau" />
+                            name="password" />
                         <span toggle="#password-field" class="bx fa-fw bx-hide field-icon click-eye"></span>
 
                         <span class="symbol-input100">
@@ -52,7 +52,7 @@
                          @endforeach
                      @endif --}}
                         <span style="color: red">
-                            @error('errors')
+                            @error('msg')
                                 {{ $message }}
                             @enderror
                         </span>

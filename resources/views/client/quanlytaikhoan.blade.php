@@ -87,7 +87,7 @@
                                             <h6 class="mb-0">Email</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input name="email" type="text" class="form-control" value="{{$qltk->email}}" disabled />
+                                            <input name="email" type="text" class="form-control" value="{{$qltk->email}}"  />
                                         </div>
                                     </div>
                                     <!--SỐ ĐIỆN THOẠI -- -->

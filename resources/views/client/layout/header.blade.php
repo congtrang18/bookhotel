@@ -56,6 +56,7 @@
                              <a href="#" title="Room & Rate" class="dropdown-toggle" data-toggle="dropdown">Phòng
                                  Và Giá<b class="caret"></b></a>
                              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
+                                {{-- <li><a href="restaurant_1.html">Restaurant 1</a></li> --}}
                                  {{-- @foreach ($listloaiphong as $item)
                                 
                                 <li><a href="{{ route('room', ['id'=>$item->id]) }}" title="">{{$item->ten}}</a></li>

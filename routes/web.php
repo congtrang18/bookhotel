@@ -16,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [trangchuController::class, "trangchu"])->name("trangchu");
 Route::get('/detail', [phongController::class, 'detailPhong'])->name("detail");
+Route::get('/phongyeuthich', [phongController::class, 'getallphongyeuthich'])->name("getallphongyeuthich");
+
+Route::post('/addphongyeuthich', [phongController::class, 'phongyeuthich'])->name("roomlove");
+Route::get('/deletephongyeuthich', [phongController::class, 'xoaphongyeuthich'])->name("deletephongyeuthich");
+
 Route::get('/formdangnhap', [khachhangUser::class, 'formdangnhap'])->name("formdangnhapuser");
 Route::post('/dangnhap', [khachhangUser::class, 'dangnhap'])->name("dangnhapuser");
 Route::get('/quanlytaikhoan', [khachhangUser::class, 'formquanlytaikhoan'])->name("qltk");
 Route::post('/capnhattaikhoan', [khachhangUser::class, 'quanlytaikhoan'])->name("suatk");
+
 
 
 Route::get('/dangxuat', [khachhangUser::class, 'dangxuatuser'])->name("dangxuatuser");
@@ -66,7 +72,7 @@ Route::prefix("/admin")->middleware('checkloginAdmin')->group(function () {
     Route::get("/deletedanhgia", [danhgiaController::class, "xoadanhgia"])->name("deletedanhgia");
 });
 Route::get('/admin/formdangnhap', [checkloginAdmin::class, 'formdangnhap'])->name('formdangnhap');
-Route::post('/admin/dangnhap', [checkloginAdmin::class, 'checklogin'])->middleware('checkloginAdmin')->name('dangnhap');
+Route::post('/admin/dangnhap', [checkloginAdmin::class, 'checklogin'])->name('dangnhap');
 Route::get('/admin/quenmk', function () {
     return view('admin.login.quenmk');
 })->name('quenmk');

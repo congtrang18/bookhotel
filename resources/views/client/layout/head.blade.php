@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <!-- CSS LIBRARY -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     
     <link rel="stylesheet" type="text/css" href="landing/html/skyline/demo/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="landing/html/skyline/demo/css/ionicons.min.css">

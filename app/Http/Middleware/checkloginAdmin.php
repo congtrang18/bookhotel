@@ -6,7 +6,7 @@ namespace App\Http\Middleware;
 use App\Models\user\khachhangModel;
 use Closure;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 use Symfony\Component\HttpFoundation\Response;
 
@@ -19,23 +19,43 @@ class checkloginAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->path() == 'admin') {
-            if (session()->has('ten')) {
-                return redirect()->route('admin');
-                // dd(session()->all());
-               
-            }else{
-                return redirect()->route('formdangnhap');
-            }
+        // if ($request->path() == 'admin') {
+        //     if (session()->has('ten')) {
+        //         return redirect()->route('admin');
+        //         // dd(session()->all());
+
+        //     }else{
+        //         return redirect()->route('formdangnhap');
+        //     }
+        // } else {
+        //     $user = new khachhangModel();
+        //     $check = $user->dangnhap($request->email, $request->mat_khau);
+        //     if (!$check) {
+        //         return back()->withErrors(['errors' => "email hoặc mật khẩu không đúng"]);
+        //     } else {
+        //         session(['user_data' => $check]);
+        //         return $next($request);
+        //     }
+        // }
+        if (Auth::check() && Auth::user()->role==1) {
+           
+            return $next($request);
         } else {
-            $user = new khachhangModel();
-            $check = $user->dangnhap($request->email, $request->mat_khau);
-            if (!$check) {
-                return back()->withErrors(['errors' => "email hoặc mật khẩu không đúng"]);
-            } else {
-                session(['user_data' => $check]);
-                return $next($request);
-            }
+            return redirect()->route('formdangnhap');
         }
+    }
+    public function formdangnhap()
+    {
+        // $user = new khachhangModel();
+        // $check = $user->dangnhap($request->email, $request->mat_khau);
+        // dd($check);
+    }
+    public function checklogin(Request $request)
+    {
+        dd($request->email);
+        return false;
+        // $user = new khachhangModel();
+        // $check = $user->dangnhap($request->email, $request->mat_khau);
+        // dd($check);
     }
 }

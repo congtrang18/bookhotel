@@ -41,65 +41,84 @@
                 </div>
                 <div class="col-lg-3">
                     <!-- FORM BOOK -->
-                    <div class="product-detail_book">
-                        <div class="product-detail_total">
-                            <img src="landing/html/skyline/demo/images/Product/icon.png" alt="#"
-                                class="icon-logo">
-                            <h6>STARTING ROOM FROM</h6>
-                            <p class="price">
-                                <span class="amout">$330</span> /days
-                            </p>
-                        </div>
-                        <div class="product-detail_form">
-                            <div class="sidebar">
-                                <!-- WIDGET CHECK AVAILABILITY -->
-                                <div class="widget widget_check_availability">
-                                    <div class="check_availability">
-                                        <div class="check_availability-field">
-                                            <label>Arrive</label>
-                                            <div class="input-group date" data-date-format="dd-mm-yyyy"
-                                                id="datepicker1">
-                                                <input class="form-control wrap-box" type="text"
-                                                    placeholder="Arrival Date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"
-                                                        aria-hidden="true"></i></span>
+                    <form action="{{ route('roomlove') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="idphong" value="{{ $tenphong[0]->idphong }}">
+                        <div class="product-detail_book">
+                            <div class="product-detail_total">
+                                <img src="landing/html/skyline/demo/images/Product/icon.png" alt="#"
+                                    class="icon-logo">
+                                <h6>{{ $tenphong[0]->ten_phong }} </h6>
+                                <p class="price">
+                                    <span> {{ number_format($detailphong[0]->gia) }}VND</span> /NGÀY
+                                </p>
+                            </div>
+                            <div class="product-detail_form">
+                                <div class="sidebar">
+                                    <!-- WIDGET CHECK AVAILABILITY -->
+                                    <div class="widget widget_check_availability">
+                                        <div class="check_availability">
+                                            <div class="check_availability-field">
+                                                <label>Ngày Tới</label>
+                                                <div class="input-group date" data-date-format="dd-mm-yyyy"
+                                                    id="datepicker1">
+                                                    <input class="form-control wrap-box" type="text"
+                                                        placeholder="ngày tới">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"
+                                                            aria-hidden="true"></i></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="check_availability-field">
-                                            <label>Depature</label>
-                                            <div id="datepicker2" class="input-group date"
-                                                data-date-format="dd-mm-yyyy">
-                                                <input class="form-control wrap-box" type="text"
-                                                    placeholder="Departure Date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"
-                                                        aria-hidden="true"></i></span>
+                                            <div class="check_availability-field">
+                                                <label>Khởi Hành</label>
+                                                <div id="datepicker2" class="input-group date"
+                                                    data-date-format="dd-mm-yyyy">
+                                                    <input class="form-control wrap-box" type="text"
+                                                        placeholder="ngày khởi hành">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"
+                                                            aria-hidden="true"></i></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="check_availability-field">
-                                            <label>Adult</label>
-                                            <select class="awe-select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                        <div class="check_availability-field">
-                                            <label>Chirld</label>
-                                            <select class="awe-select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
+                                            <div class="check_availability-field">
+                                                <label>Người lớn</label>
+                                                <select class="awe-select">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="check_availability-field">
+                                                <label>Trẻ em</label>
+                                                <select class="awe-select">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- END / WIDGET CHECK AVAILABILITY -->
                                 </div>
-                                <!-- END / WIDGET CHECK AVAILABILITY -->
+                                <button class="btn btn-room btn-product">Đặt Phòng</button>
                             </div>
-                            <button class="btn btn-room btn-product">Book Now</button>
                         </div>
-                    </div>
+                        <div class="roomlove text-center" style="margin-top: 50px">
+                            {{-- @if (session()->has('idkh')) --}}
+                                <button class="btn btn-room btn-product">Phòng Yêu Thích</button>
+                            {{-- @endif --}}
+                        </div>
+                        @if (session()->has('err'))
+                        <div class="alert alert-warning" style="margin-top: 20px" role="alert">
+                            {{session('err')}}
+                        </div>
+                        @endif
+                        @if (session()->has('phongdatontai'))
+                        <div class="alert alert-danger" style="margin-top: 20px" role="alert">
+                            {{session('phongdatontai')}}
+                        </div>
+                        @endif
+                    </form>
                     <!-- END / FORM BOOK -->
                 </div>
             </div>
@@ -174,7 +193,7 @@
                                             <li>Bếp gas</li>
                                         </ul>
                                     </div>
-                                   
+
                                     <div class="col-xs-6 col-lg-4">
                                         <h6>Phòng Ngủ</h6>
                                         <ul>
@@ -195,7 +214,7 @@
                                             <li>Móc quần áo</li>
                                         </ul>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         </div>
