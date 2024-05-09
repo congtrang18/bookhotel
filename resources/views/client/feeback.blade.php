@@ -1,4 +1,7 @@
 @extends('index')
+@section('title')
+   Đánh giá
+@endsection
 @section('slider')
 <section class="banner-tems text-center">
     <div class="container">

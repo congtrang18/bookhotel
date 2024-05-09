@@ -36,7 +36,11 @@ Route::get('/formdangky', [khachhangUser::class, 'formdangky'])->name("formdangk
 Route::post('/dangky', [khachhangUser::class, 'dangky'])->name("dangky");
 
 Route::get('/room', [phongController::class, "listphong"])->name("room");
-Route::get('/feedback', [danhgiaController::class, 'listdanhgia']);
+Route::get('/danhgia', [danhgiaController::class, 'listdanhgia'])->name('feedback');
+Route::get('/lienhe', function(){
+    return view("client/lienhe");
+})->name('lienhe');
+
 
 // admin
 Route::prefix("/admin")->middleware('checkloginAdmin')->group(function () {

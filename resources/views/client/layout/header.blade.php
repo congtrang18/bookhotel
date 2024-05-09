@@ -1,3 +1,11 @@
+<?php
+
+use App\Http\Controllers\user\trangchuController;
+
+$phong= new trangchuController();
+$listloaiphong=$phong->header();
+
+?>
  <!-- HEADER -->
  <header class="header-sky">
      <div class="container">
@@ -57,11 +65,11 @@
                                  Và Giá<b class="caret"></b></a>
                              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
                                 {{-- <li><a href="restaurant_1.html">Restaurant 1</a></li> --}}
-                                 {{-- @foreach ($listloaiphong as $item)
+                                 @foreach ($listloaiphong as $item)
                                 
                                 <li><a href="{{ route('room', ['id'=>$item->id]) }}" title="">{{$item->ten}}</a></li>
                                     
-                                @endforeach --}}
+                                @endforeach
 
                              </ul>
                          </li>
@@ -130,8 +138,8 @@
                                  <li><a href="gallery_3.html" title="">Gallery 3</a></li>
                              </ul>
                          </li>
-                         <li><a href="about.html" title="About">About</a></li>
-                         <li><a href="contact.html" title="Contact">Contact</a></li>
+                         <li><a href="{{ route('feedback') }}" title="About">Đánh Giá</a></li>
+                         <li><a href="{{ route('lienhe') }}" title="Contact">Liên Hệ</a></li>
                      </ul>
                  </div>
              </div>

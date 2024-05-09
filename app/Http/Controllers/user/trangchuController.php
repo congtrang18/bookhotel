@@ -19,8 +19,13 @@ class trangchuController extends Controller
     {
         return view('client.trangchu', ["listloaiphong" => $this->trangchu->trangchu()]);
     }
-    // public function header(){
-    //     return view('client.layout.header',["listloaiphong"=>$this->trangchu->trangchu()]);
-    // }
+    public function header(){
+       $listloaiphong=$this->trangchu->trangchu();
+    //    dd($listloaiphong);
+    return $listloaiphong;
+    }
+    public function timkiemphongController(){
+        return view('client.trangchu',['findroom'=>$this->trangchu->formtimkiemphong()]);
+    }
    
 }

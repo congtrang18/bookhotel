@@ -15,5 +15,8 @@ class trangchuModel extends Model
     // public function phong(){
     //     return DB::table("phong")->get();
     // }
+    public function formtimkiemphong(){
+        return DB::select("SELECT phong.*,loai_phong.ten as 'tenloaiphong' FROM `phong` JOIN loai_phong ON loai_phong.id=phong.id_loai_phong");
+    }
 
 }

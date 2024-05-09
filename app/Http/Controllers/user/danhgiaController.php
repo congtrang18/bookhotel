@@ -17,4 +17,5 @@ class danhgiaController extends Controller
     public function listdanhgia(){
         return view('client.feeback',['listdanhgia'=>$this->danhgia->danhgiamodel()]);
     }
+    
 }
