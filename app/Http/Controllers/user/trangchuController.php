@@ -25,7 +25,8 @@ class trangchuController extends Controller
     return $listloaiphong;
     }
     public function timkiemphongController(){
-        return view('client.trangchu',['findroom'=>$this->trangchu->formtimkiemphong()]);
+        $findroom=$this->trangchu->formtimkiemphong();
+        return $findroom;
     }
    
 }

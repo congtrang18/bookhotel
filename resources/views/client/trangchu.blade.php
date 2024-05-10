@@ -2,6 +2,7 @@
 @section('title')
     Trang chủ
 @endsection
+
 @section('content')
     <!-- OUR-ROOMS-->
     <section class="rooms">

@@ -1,4 +1,14 @@
- <!-- SLIDER -->
+<?php 
+use App\Http\Controllers\user\trangchuController;
+
+$phong= new trangchuController();
+$findroom=$phong->timkiemphongController();
+// dd($findroom);
+
+?>
+
+
+<!-- SLIDER -->
  <section class="section-slider height-v">
      <div id="index12" class="owl-carousel  owl-theme">
          <div class="item">
@@ -39,12 +49,13 @@
                  <form action="">
                     <div class=" carousel-search">
                         <div class="btn-group">
-                            <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
+                            <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">?</a>
                             <ul class="dropdown-menu">
-                                <li><a>1</a></li>
-                                <li><a>2</a></li>
-                                <li><a>3</a></li>
-                                <li><a>4</a></li>
+                                @foreach ($findroom as $phong)
+                                     <li><a>{{$phong->ten}}</a></li>
+                                @endforeach
+                               
+                                
                             </ul>
                         </div>
                     </div>
@@ -65,12 +76,11 @@
                 <form action="">
                    <div class=" carousel-search">
                        <div class="btn-group">
-                           <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
+                           <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">?</a>
                            <ul class="dropdown-menu">
-                               <li><a>1</a></li>
-                               <li><a>2</a></li>
-                               <li><a>3</a></li>
-                               <li><a>4</a></li>
+                            @foreach ($findroom as $gia)
+                            <li><a>{{number_format($gia->gia)}}VND</a></li>
+                       @endforeach
                            </ul>
                        </div>
                    </div>
@@ -92,7 +102,7 @@
                  <form>
                      <div class=" carousel-search">
                          <div class="btn-group">
-                             <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
+                             <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">?</a>
                              <ul class="dropdown-menu">
                                  <li><a>1</a></li>
                                  <li><a>2</a></li>
@@ -108,7 +118,7 @@
                  <form>
                      <div class=" carousel-search">
                          <div class="btn-group">
-                             <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
+                             <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">?</a>
                              <ul class="dropdown-menu">
                                  <li><a>1</a></li>
                                  <li><a>2</a></li>

@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\khachhangController;
 use App\Http\Controllers\user\khachhangController as khachhangUser;
 use App\Http\Controllers\admin\Listloaiphong;
 use App\Http\Controllers\admin\phong;
-
+use App\Http\Controllers\user\datphongController;
 use App\Http\Controllers\user\phongController;
 use App\Http\Controllers\user\trangchuController;
 
@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [trangchuController::class, "trangchu"])->name("trangchu");
 Route::get('/detail', [phongController::class, 'detailPhong'])->name("detail");
 Route::get('/phongyeuthich', [phongController::class, 'getallphongyeuthich'])->name("getallphongyeuthich");
+Route::get('/formdatphong', [datphongController::class, 'formdatphong'])->name("datphong");
+
 
 Route::post('/addphongyeuthich', [phongController::class, 'phongyeuthich'])->name("roomlove");
 Route::get('/deletephongyeuthich', [phongController::class, 'xoaphongyeuthich'])->name("deletephongyeuthich");

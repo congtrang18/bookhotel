@@ -130,12 +130,15 @@ $listloaiphong=$phong->header();
                              </ul>
                          </li>
                          <li class="dropdown ">
-                             <a href="gallery_1.html" title="Gallery" class="dropdown-toggle"
-                                 data-toggle="dropdown">Gallery <b class="caret"></b></a>
+                             <a href="#" title="Gallery" class="dropdown-toggle"
+                                 data-toggle="dropdown">Phòng <b class="caret"></b></a>
                              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                 <li><a href="gallery_1.html" title="">Gallery 1</a></li>
+                                 {{-- <li><a href="gallery_1.html" title="">Gallery 1</a></li>
                                  <li><a href="gallery_2.html" title="">Gallery 2</a></li>
-                                 <li><a href="gallery_3.html" title="">Gallery 3</a></li>
+                                 <li><a href="gallery_3.html" title="">Gallery 3</a></li> --}}
+                                 <li><a href="{{ route('getallphongyeuthich') }}" title="">Phòng yêu thích</a></li>
+                                 <li><a href="gallery_2.html" title="">Quản lý phòng</a></li>
+                                 {{-- <li><a href="gallery_3.html" title="">Gallery 3</a></li> --}}
                              </ul>
                          </li>
                          <li><a href="{{ route('feedback') }}" title="About">Đánh Giá</a></li>
