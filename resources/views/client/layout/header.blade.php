@@ -19,7 +19,7 @@ $listloaiphong=$phong->header();
              <div class="header-top-right">
                  <ul>
                      @if (session()->has('ten'))
-                         <li class="dropdown"><a href="{{ route('formdangnhapuser') }}" title="LOGIN"
+                         <li class="dropdown"><a href="#" title="LOGIN"
                                  class="dropdown-toggle">{{ session('ten') }}</a></li>
                          <ul>
                              <li class="dropdown"><a href="{{ route('qltk') }}" title="REGISTER"

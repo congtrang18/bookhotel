@@ -20,6 +20,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    {{-- <th></th> --}}
                     <th scope="col">STT</th>
                     <th scope="col">Tên phòng</th>
                     <th scope="col">ảnh</th>

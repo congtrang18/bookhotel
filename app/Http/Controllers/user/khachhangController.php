@@ -75,4 +75,6 @@ class khachhangController extends Controller
         $qltk = $this->khachhanguser->formqltk(session('idkh'));
         return view('client.quanlytaikhoan', ['qltk' => $qltk]);
     }
+
+    // sử dụng user của laravel
 }

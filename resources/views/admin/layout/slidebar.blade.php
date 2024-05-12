@@ -4,14 +4,14 @@
             alt="User Image">
         <div>
             <p class="app-sidebar__user-name"><b>
-                    @if (session()->has('ten'))
-                        {{ session('ten') }}
-                    {{-- @else
-                        {{
-                        return redirect()->route('formdangnhap')
-                        }} --}}
+                    @if (session()->has('adminname'))
+                        {{ session('adminname') }}
+                  
+                        
+                    @else
+                        
+                    {{   redirect()->back() }}
                     @endif
-                    {{-- {{session()->has('ten')?session('ten') : redirect()->route('formdangnhap')}} --}}
                 </b></p>
             <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
         </div>

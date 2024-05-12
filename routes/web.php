@@ -79,6 +79,10 @@ Route::prefix("/admin")->middleware('checkloginAdmin')->group(function () {
 });
 Route::get('/admin/formdangnhap', [checkloginAdmin::class, 'formdangnhap'])->name('formdangnhap');
 Route::post('/admin/dangnhap', [checkloginAdmin::class, 'checklogin'])->name('dangnhap');
+Route::get('/admin/logout', [checkloginAdmin::class, 'logoutadmin'])->name('dangxuatadmin');
+
+Route::post('/admin/dangky', [checkloginAdmin::class, 'dangky'])->name('admindangky');
+
 Route::get('/admin/quenmk', function () {
     return view('admin.login.quenmk');
 })->name('quenmk');

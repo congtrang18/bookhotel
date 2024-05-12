@@ -14,17 +14,17 @@
         </section>
         <!-- END-BANNER -->
 @endsection
+{{-- @dd($khachhang); --}}
 @section('content')
     <!-- BODY-ROOM-5 -->
     <section class="check-out">
         <div class="container">
-            <p class="check-p">Returning customer? <a href="#" title=""> Click here to login</a></p>
+            {{-- <p class="check-p">Returning customer? <a href="#" title=""> Click here to login</a></p> --}}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="check-left ">
-                        <h2>BILLING DETAILS</h2>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                        <div class="form-group">
+                        <h2>CHI TIẾT THANH TOÁN</h2>
+                        {{-- <div class="form-group">
                             <label>Company &nbsp;<span>*</span></label>
                             <div class="dropdown">
                                 <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle form-control" href="#">
@@ -36,8 +36,8 @@
                                     <li>Thai Lan</li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> --}}
+                        {{-- <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>First Name <span>*</span></label>
@@ -50,17 +50,21 @@
                                     <input type="text" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
+                            <label>Họ và tên <span>*</span></label>
+                            <input type="text" value="{{$khachhang->ten}}" class="form-control">
+                        </div>
+                        {{-- <div class="form-group">
                             <label>Company Name</label>
                             <input type="text" name="Name" class="form-control" value="" required="required" pattern="" title="">
-                        </div>
+                        </div> --}}
                         <div class="form-group">
-                            <label>Address <span>*</span></label>
-                            <input type="text" name="Address" class="form-control" value="" required="required" pattern="" title="" placeholder="Street Address">
-                            <input type="text" name="Address" class="form-control" value="" required="required" pattern="" title="" placeholder="Apartment, suite, unit etc. (Optional)">
+                            <label>Địa chỉ <span>*</span></label>
+                            <input type="text" name="Address" class="form-control" value="{{$khachhang->dia_chi}}" required="required" pattern="" title="" >
+                            {{-- <input type="text" name="Address" class="form-control" value="" required="required" pattern="" title="" placeholder="Apartment, suite, unit etc. (Optional)"> --}}
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Town / City &nbsp;<span>*</span></label>
@@ -73,40 +77,40 @@
                                     <input type="text" class="form-control" placeholder="Country">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Email Address &nbsp; <span>*</span></label>
-                                    <input type="email" name="Email" class="form-control" value="" required="required" title="" placeholder="Street Address">
+                                    <label>Email &nbsp; <span>*</span></label>
+                                    <input type="email" name="Email" class="form-control" value="{{$khachhang->email}}" required="required" title="" placeholder="Street Address">
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Phone &nbsp;<span>*</span></label>
-                                    <input type="text" class="form-control" placeholder="Country">
+                                    <label>số điện thoại &nbsp;<span>*</span></label>
+                                    <input type="text" value="{{$khachhang->sdt}}" class="form-control" placeholder="">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Order Notes</label>
-                            <textarea name="textarea" class="form-control" rows="3" required="required" placeholder="Notes about your order, eg. special notes for delivery"></textarea>
+                            <label class="control-label">Ghi chú</label>
+                            <textarea name="textarea" class="form-control" rows="3" required="required" placeholder=""></textarea>
                         </div>
-                        <div class="radio b">
+                        {{-- <div class="radio b">
                             <label>
                                 <input type="radio" name="optradio1"> Create an account?</label>
-                        </div>
-                        <div class="click form-control">You have a coupon? <a href="#" title="">Click here to enter your code</a>
-                        </div>
+                        </div> --}}
+                        {{-- <div class="click form-control">You have a coupon? <a href="#" title="">Click here to enter your code</a>
+                        </div> --}}
                     </div>
                     <!-- item-right -->
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-1">
                     <div class="check-right ">
-                        <h2 class="text-uppercase">Your payment details</h2>
+                        <h2 class="text-uppercase">CHI TIẾT THANH TOÁN CỦA BẠN</h2>
                         <div class="checkout_cart">
                             <!-- ITEM -->
-                            <div class="cart-item">
+                            {{-- <div class="cart-item">
                                 <div class="img">
                                     <a href="#"><img src="images/Checkout/checkout.jpg" alt="#"></a>
                                 </div>
@@ -115,22 +119,25 @@
                                     <p><span>2 days  - 3 rooms</span> <b>$240</b></p>
                                 </div>
                                 <a href="#" class="remove"> <i class="ion-close-round" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- END / ITEM -->
-                            <!-- ITEM -->
+                            </div> --}}
+                            @foreach ($getallphongyth as $item)
                             <div class="cart-item">
                                 <div class="img">
-                                    <a href="#"><img src="images/Checkout/checkou-1t.jpg" alt="#"></a>
+                                    <a href="#"><img src="upload_img/{{$item->anh_phong}}" alt="#"></a>
                                 </div>
                                 <div class="text">
-                                    <a href="#">Standard Room</a>
-                                    <p><span>2 days  - 2 rooms</span> <b>$360</b></p>
+                                    <a href="#">{{$item->ten_phong}}</a>
+                                    <p><span>2 days  - 2 rooms</span> <b>{{number_format($item->gia_phong)}}VND</b></p>
                                 </div>
                                 <a href="#" class="remove"> <i class="ion-close-round" aria-hidden="true"></i></a>
                             </div>
+                            @endforeach
                             <!-- END / ITEM -->
                             <!-- ITEM -->
-                            <div class="cart-item">
+                          
+                            <!-- END / ITEM -->
+                            <!-- ITEM -->
+                            {{-- <div class="cart-item">
                                 <div class="img">
                                     <a href="#"><img src="images/Checkout/checkou-3t.jpg" alt="#"></a>
                                 </div>
@@ -139,7 +146,7 @@
                                     <p><span>4 days  - 1 rooms</span> <b>$480</b></p>
                                 </div>
                                 <a href="#" class="remove"><i class="ion-close-round" aria-hidden="true"></i></a>
-                            </div>
+                            </div> --}}
                             <!-- END / ITEM -->
                         </div>
                         <div class="checkout-cartinfo">

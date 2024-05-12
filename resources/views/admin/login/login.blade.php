@@ -23,8 +23,15 @@
                     </span>
                     <!--=====FORM INPUT TÀI KHOẢN VÀ PASSWORD======-->
                     <!-- <form action="" method="post"> -->
+                    {{-- <div class="wrap-input100">
+                        <input class="input100" type="text" placeholder="name"  name="name" />
+
+                        <span class="symbol-input100">
+                            <i class="bx bx-user"></i>
+                        </span>
+                    </div> --}}
                     <div class="wrap-input100">
-                        <input class="input100" type="text" placeholder="Tài khoản quản trị"  name="email" />
+                        <input class="input100" type="text" placeholder="Tài khoản quản trị"   name="email" />
 
                         <span class="symbol-input100">
                             <i class="bx bx-user"></i>
@@ -43,16 +50,12 @@
 
                     <!--=====ĐĂNG NHẬP======-->
                     <div>
-                        <input type="submit" value="Đăng nhập" name="btnsubmit" />
+                        <input type="submit" value="Đăng nhập"  />
                     </div>
                     <div class="my-3">
-                        {{-- @if ($errors->any())
-                         @foreach ($errors->all() as $item)
-                             {{$item}}
-                         @endforeach
-                     @endif --}}
+                     
                         <span style="color: red">
-                            @error('msg')
+                            @error('err')
                                 {{ $message }}
                             @enderror
                         </span>
