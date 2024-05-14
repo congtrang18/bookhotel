@@ -25,11 +25,13 @@ class phongController extends Controller
             "detailanhphong" => $this->phong->detailanhphong($request->id),
             "tenphong" => $this->phong->tenphong($request->id),
             "detailphong" => $this->phong->detailphong($request->id),
-            "phonglienquan" => $this->phong->phonglienquan($request->id, $request->idloaiphong)
+            "phonglienquan" => $this->phong->phonglienquan($request->id, $request->idloaiphong),
+            'binhluan'=>$this->phong->getallbinhluanuser($request->id)
         ]);
     }
     public function phongyeuthich(Request $request)
     {
+        // dd($request->ngay_toi);
         if (!session()->has('idkh')) {
             session()->flash('err', 'bạn cần đăng nhập để thực hiện chức năng');
             return back();
@@ -49,7 +51,7 @@ class phongController extends Controller
             }
         }
         if (!$check) {
-            $this->phong->addphongyeuthich($request->idphong);
+            $this->phong->addphongyeuthich($request->idphong,date('Y-m-d',strtotime($request->ngay_toi)));
             
             return redirect()->route('getallphongyeuthich');
         }
@@ -57,12 +59,33 @@ class phongController extends Controller
     }
     public function getallphongyeuthich()
     {
+       if (session()->has('idkh')) {
         $getallphongyeuthich = $this->phong->getallphongyeuthich(session('idkh'));
 
         return view("client.phongyeuthich", ['phongyeuthich' => $getallphongyeuthich]);
+       }
+       return redirect()->route('formdangnhapuser');
+        
     }
     public function xoaphongyeuthich(Request $request){
         $this->phong->xoaphongyeuthich($request->id);
         return back();
+    }
+    public function guibluser(Request $request){
+        $rule=[
+            'binhluan'=>'required'
+        ];
+        $message=[
+            'binhluan.required'=>'bình luận bắt buộc phải nhập'
+        ];
+        $request->validate($rule,$message);
+        $data=[
+            'noi_dung'=>$request->binhluan,
+            'ngay_bl'=>date('Y-m-d'),
+            'id_phong'=>$request->idphong,
+            'id_kh'=>session('idkh')
+        ];
+        $this->phong->guibinhluanuser($data);
+        return redirect()->back();
     }
 }

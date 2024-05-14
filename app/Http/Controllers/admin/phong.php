@@ -61,6 +61,7 @@ class phong extends Controller
         // dd($upload_img);
         // die;
         move_uploaded_file($_FILES['imgroom']['tmp_name'], $upload_img);
+        $slnguoi = $request->sl_nguoilon + $request->sl_treem;
 
         $data = [
             'ten' => $request->ten,
@@ -69,7 +70,9 @@ class phong extends Controller
             'dien_tich' => $request->dien_tich,
             'huong_nhin' => $request->huong_nhin,
             'giuong' => $request->giuong,
-            'sl_nguoi' => $request->sl_nguoi,
+            'nguoi_lon' => $request->sl_nguoilon,
+            'tre_em' => $request->sl_treem,
+            'sl_nguoi' => $slnguoi,
             'mo_ta' => $request->mo_ta,
             'id_loai_phong' => $request->id_loai_phong,
         ];
@@ -102,7 +105,7 @@ class phong extends Controller
             $upload_img = public_path("upload_img/") . $img;
             move_uploaded_file($_FILES['imgroom']['tmp_name'], $upload_img);
         }
-
+        $slnguoi = $request->sl_nguoilon + $request->sl_treem;
         $data = [
             'ten' => $request->ten,
             'imgroom' => $img,
@@ -110,7 +113,9 @@ class phong extends Controller
             'dien_tich' => $request->dien_tich,
             'huong_nhin' => $request->huong_nhin,
             'giuong' => $request->giuong,
-            'sl_nguoi' => $request->sl_nguoi,
+            'nguoi_lon' => $request->sl_nguoilon,
+            'tre_em' => $request->sl_treem,
+            'sl_nguoi' => $slnguoi,
             'mo_ta' => $request->mo_ta,
             'id_loai_phong' => $request->id_loai_phong,
         ];

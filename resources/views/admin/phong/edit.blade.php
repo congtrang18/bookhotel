@@ -21,7 +21,7 @@
                     <form action="{{ route('updatephong', ['id'=> $editphong[0]->id] ) }}" method="post" enctype="multipart/form-data">
                         <div class="form-group col-md-12">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">Tên phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->ten }}" name="ten"
                                         type="text">
@@ -29,14 +29,14 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">ảnh phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->imgroom }}" name="imgroom"
                                         type="file">
                                    <span><img src="../upload_img/{{$editphong[0]->imgroom}}" style="width: 70%;height: 50%;" alt=""></span>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">Giá phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->gia }}" name="gia"
                                         type="text">
@@ -44,7 +44,11 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-3">
+                                
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
                                     <label class="control-label">Diện tích phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->dien_tich }}"
                                         name="dien_tich" type="text">
@@ -52,10 +56,7 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                               
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">Hướng nhìn phòng</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->huong_nhin }}"
                                         name="huong_nhin" type="text">
@@ -63,7 +64,7 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">Giường</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->giuong }}" name="giuong"
                                         type="text">
@@ -71,16 +72,27 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="control-label">số lượng người</label>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label">số lượng người lớn</label>
                                     <input class="form-control mb-3" value="{{ $editphong[0]->sl_nguoi }}"
-                                        name="sl_nguoi" type="text">
-                                    @error('sl_nguoi')
+                                        name="sl_nguoilon" type="text">
+                                    @error('sl_nguoilon')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">số lượng trẻ em</label>
+                                    <input class="form-control mb-3" value="{{ $editphong[0]->sl_nguoi }}"
+                                        name="sl_treem" type="text">
+                                    @error('sl_treem')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
                                
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label class="control-label">Loại phòng</label>
                                     <select name="id_loai_phong" id="" class="form-select form-control">
                                         <option value="{{ $editphong[0]->id_loai_phong }}">{{ $editphong[0]->tenloaiphong }}</option>

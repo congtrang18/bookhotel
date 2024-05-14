@@ -32,7 +32,9 @@ class phong extends FormRequest
             "dien_tich" => "required|numeric|min:1",
             "huong_nhin" => "required",
             "giuong" => "required",
-            "sl_nguoi" => "required|numeric|min:1",
+            "sl_nguoilon" => "required|numeric|min:1",
+            "sl_treem" => "required|numeric|min:1",
+
             "mo_ta" => "required",
             "id_loai_phong" => "required",
         ];

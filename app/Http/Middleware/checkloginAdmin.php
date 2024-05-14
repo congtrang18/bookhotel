@@ -27,18 +27,5 @@ class checkloginAdmin
             return redirect()->route('formdangnhap');
         }
     }
-    public function formdangnhap()
-    {
-        // $user = new khachhangModel();
-        // $check = $user->dangnhap($request->email, $request->mat_khau);
-        // dd($check);
-    }
-    public function checklogin(Request $request)
-    {
-        dd($request->email);
-        return false;
-        // $user = new khachhangModel();
-        // $check = $user->dangnhap($request->email, $request->mat_khau);
-        // dd($check);
-    }
+    
 }

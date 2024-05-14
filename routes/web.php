@@ -9,15 +9,18 @@ use App\Http\Controllers\admin\phong;
 use App\Http\Controllers\user\datphongController;
 use App\Http\Controllers\user\phongController;
 use App\Http\Controllers\user\trangchuController;
-
+use App\Http\Controllers\admin\danhgiaController as danhgiaadmin;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::get('/', [trangchuController::class, "trangchu"])->name("trangchu");
 Route::get('/detail', [phongController::class, 'detailPhong'])->name("detail");
+Route::post('/guibinhluan', [phongController::class, 'guibluser'])->name("gbl");
+
 Route::get('/phongyeuthich', [phongController::class, 'getallphongyeuthich'])->name("getallphongyeuthich");
 Route::get('/formdatphong', [datphongController::class, 'formdatphong'])->name("datphong");
+
 
 
 Route::post('/addphongyeuthich', [phongController::class, 'phongyeuthich'])->name("roomlove");
@@ -39,6 +42,8 @@ Route::post('/dangky', [khachhangUser::class, 'dangky'])->name("dangky");
 
 Route::get('/room', [phongController::class, "listphong"])->name("room");
 Route::get('/danhgia', [danhgiaController::class, 'listdanhgia'])->name('feedback');
+Route::post('/guidanhgia', [danhgiaController::class, 'guidanhgia'])->name('guidanhgia');
+
 Route::get('/lienhe', function(){
     return view("client/lienhe");
 })->name('lienhe');
@@ -74,8 +79,8 @@ Route::prefix("/admin")->middleware('checkloginAdmin')->group(function () {
     Route::post("/updatekhachhang", [khachhangController::class, "updatekhachhang"])->name("updatekhachhang");
 
     // đánh giá
-    Route::get("/danhgia", [danhgiaController::class, "danhgia"])->name("danhgia");
-    Route::get("/deletedanhgia", [danhgiaController::class, "xoadanhgia"])->name("deletedanhgia");
+    Route::get("/danhgia", [danhgiaadmin::class, "danhgia"])->name("danhgia");
+    Route::get("/deletedanhgia", [danhgiaadmin::class, "xoadanhgia"])->name("deletedanhgia");
 });
 Route::get('/admin/formdangnhap', [checkloginAdmin::class, 'formdangnhap'])->name('formdangnhap');
 Route::post('/admin/dangnhap', [checkloginAdmin::class, 'checklogin'])->name('dangnhap');

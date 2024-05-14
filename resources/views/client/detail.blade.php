@@ -2,6 +2,8 @@
 @section('title')
     Chi Tiết
 @endsection
+{{-- @dd($detailphong) --}}
+
 @section('content')
 @section('slider')
     <section class="banner-tems text-center">
@@ -44,6 +46,9 @@
                     <form action="{{ route('roomlove') }}" method="post">
                         @csrf
                         <input type="hidden" name="idphong" value="{{ $tenphong[0]->idphong }}">
+                        <input type="hidden" name="nguoi_lon" value="{{ $detailphong[0]->nguoi_lon }}">
+                        <input type="hidden" name="tre_em" value="{{ $detailphong[0]->tre_em }}">
+
                         <div class="product-detail_book">
                             <div class="product-detail_total">
                                 <img src="landing/html/skyline/demo/images/Product/icon.png" alt="#"
@@ -53,6 +58,7 @@
                                     <span> {{ number_format($detailphong[0]->gia) }}VND</span> /NGÀY
                                 </p>
                             </div>
+
                             <div class="product-detail_form">
                                 <div class="sidebar">
                                     <!-- WIDGET CHECK AVAILABILITY -->
@@ -63,7 +69,7 @@
                                                 <div class="input-group date" data-date-format="dd-mm-yyyy"
                                                     id="datepicker1">
                                                     <input class="form-control wrap-box" type="text"
-                                                        placeholder="ngày tới">
+                                                        placeholder="ngày tới" name="ngay_toi">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"
                                                             aria-hidden="true"></i></span>
                                                 </div>
@@ -80,43 +86,47 @@
                                             </div>
                                             <div class="check_availability-field">
                                                 <label>Người lớn</label>
-                                                <select class="awe-select">
+                                                {{ $detailphong[0]->nguoi_lon }}
+                                                {{-- <select class="awe-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                     <option>4</option>
-                                                </select>
+                                                </select> --}}
                                             </div>
                                             <div class="check_availability-field">
                                                 <label>Trẻ em</label>
-                                                <select class="awe-select">
+                                                {{ $detailphong[0]->tre_em }}
+
+                                                {{-- <select class="awe-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                     <option>4</option>
-                                                </select>
+                                                </select> --}}
                                             </div>
                                         </div>
                                     </div>
                                     <!-- END / WIDGET CHECK AVAILABILITY -->
                                 </div>
-                                <button class="btn btn-room btn-product">Đặt Phòng</button>
+                                <button class="btn btn-room btn-product">Phòng yêu thích</button>
                             </div>
+
                         </div>
-                        <div class="roomlove text-center" style="margin-top: 50px">
-                            {{-- @if (session()->has('idkh')) --}}
-                                <button class="btn btn-room btn-product">Phòng Yêu Thích</button>
-                            {{-- @endif --}}
-                        </div>
+                  
+                   
+                        {{-- <div class="roomlove text-center" style="margin-top: 50px">
+                            <button class="btn btn-room btn-product">Phòng Yêu Thích</button>
+                        </div> --}}
                         @if (session()->has('err'))
-                        <div class="alert alert-warning" style="margin-top: 20px" role="alert">
-                            {{session('err')}}
-                        </div>
+                            <div class="alert alert-warning" style="margin-top: 20px" role="alert">
+                                {{ session('err') }}
+                            </div>
                         @endif
                         @if (session()->has('phongdatontai'))
-                        <div class="alert alert-danger" style="margin-top: 20px" role="alert">
-                            {{session('phongdatontai')}}
-                        </div>
+                            <div class="alert alert-danger" style="margin-top: 20px" role="alert">
+                                {{ session('phongdatontai') }}
+                            </div>
                         @endif
                     </form>
                     <!-- END / FORM BOOK -->
@@ -525,6 +535,63 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex justify-content-center row">
+
+            <div class="col-md-12">
+                <div class="d-flex flex-column comment-section">
+
+                    <div class="p-2">
+                        @if (session()->has('idkh'))
+                            <form action="{{ route('gbl') }}" method="POST">
+                                @csrf
+                                <input type="hidden" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>"
+                                    name="idphong">
+                                <div class="d-flex flex-row align-items-start">
+                                    <textarea class="form-control ml-1 shadow-none textarea boxbl" style="height: 100px;" name="binhluan"
+                                        placeholder="Nhập bình luận"></textarea>
+                                </div>
+                                <div style="margin-top: 1%" class="text-right">
+                                    @error('binhluan')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                    <button class="btn btn-primary btn-sm shadow-none" type="submit">Gửi bình
+                                        luận</button>
+                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancelbl"
+                                        onclick="huy()" type="button">Hủy</button>
+                                </div>
+                            </form>
+                        @endif
+
+
+
+
+                        @if (!session()->has('idkh'))
+                            <p> Bạn cần <a href="?act=dangnhap" style="border-bottom: 1px solid black;">đăng nhập</a>
+                                để thực hiện chức năng bình luận!</p>
+                        @endif
+
+                    </div>
+                    @foreach ($binhluan as $bl)
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                    src="upload_img/{{ $bl->avatar }}" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2">
+                                    <span class="d-block " style="font-weight:700">{{ $bl->ten }}</span> <br>
+                                    <span style="opacity: 0.5;">{{ date('d-m-Y', strtotime($bl->ngay_bl)) }}</span>
+                                </div>
+                            </div>
+                            <div class="mt-2 contain-comment">
+                                <p>{{ $bl->noi_dung }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+
+
+                </div>
+            </div>
+        </div>
         <!-- END / TAB -->
         <!-- ANOTHER ACCOMMODATION -->
         <div class="product-detail">
@@ -563,6 +630,13 @@
         </div>
         <!-- END / ANOTHER ACCOMMODATION -->
     </div>
+
 </section>
 <!-- END / SHOP DETAIL -->
 @endsection
+<script>
+    function huy() {
+        document.querySelector('.boxbl').value = ""
+
+    }
+</script>

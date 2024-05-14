@@ -29,7 +29,7 @@ class phongModel extends Model
     {
         return DB::select("SELECT * FROM `phong` WHERE phong.id <> $id AND phong.id_loai_phong=$idloaiphong;");
     }
-    public function addphongyeuthich($idphong)
+    public function addphongyeuthich($idphong,$ngay_toi)
     {
 
         $phong = DB::table('phong')->where('id', $idphong)->first();
@@ -38,25 +38,36 @@ class phongModel extends Model
             'ten_phong' => "$phong->ten",
             'gia_phong' => $phong->gia,
             'anh_phong' => "$phong->imgroom",
+            'nguoi_lon'=>$phong->nguoi_lon,
+            'tre_em'=>$phong->tre_em,
+            'ngay_toi'=>$ngay_toi,
             'id_khach_hang' => session('idkh'),
             'id_phong' => $phong->id,
 
         ];
-       
+
 
         DB::table('phong_yeu_thich')->insert($data);
     }
     public function getallphongyeuthich($idkh)
     {
-        return  DB::table('phong_yeu_thich')->select('phong_yeu_thich.*','phong.id as idphong','loai_phong.id as idlp')
-        ->join('phong','phong.id','phong_yeu_thich.id_phong')
-        ->join('loai_phong','phong.id_loai_phong','loai_phong.id')
-        ->where([
-           
-            'id_khach_hang' => $idkh
-        ])->get();
+        return  DB::table('phong_yeu_thich')->select('phong_yeu_thich.*', 'phong.id as idphong', 'loai_phong.id as idlp')
+            ->join('phong', 'phong.id', 'phong_yeu_thich.id_phong')
+            ->join('loai_phong', 'phong.id_loai_phong', 'loai_phong.id')
+            ->where([
+
+                'id_khach_hang' => $idkh
+            ])->get();
     }
-    public function xoaphongyeuthich($id){
+    public function xoaphongyeuthich($id)
+    {
         DB::table('phong_yeu_thich')->delete($id);
+    }
+    public function getallbinhluanuser($idphong)
+    {
+        return DB::table('binh_luan')->join('khach_hang','khach_hang.id','binh_luan.id_kh')->where('id_phong', $idphong)->orderBy('id_bl','desc')->get();
+    }
+    public function guibinhluanuser($data){
+        DB::table('binh_luan')->insert($data);
     }
 }

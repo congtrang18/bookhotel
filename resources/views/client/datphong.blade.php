@@ -110,16 +110,7 @@
                         <h2 class="text-uppercase">CHI TIẾT THANH TOÁN CỦA BẠN</h2>
                         <div class="checkout_cart">
                             <!-- ITEM -->
-                            {{-- <div class="cart-item">
-                                <div class="img">
-                                    <a href="#"><img src="images/Checkout/checkout.jpg" alt="#"></a>
-                                </div>
-                                <div class="text">
-                                    <a href="#">Luxury Room</a>
-                                    <p><span>2 days  - 3 rooms</span> <b>$240</b></p>
-                                </div>
-                                <a href="#" class="remove"> <i class="ion-close-round" aria-hidden="true"></i></a>
-                            </div> --}}
+                            
                             @foreach ($getallphongyth as $item)
                             <div class="cart-item">
                                 <div class="img">
