@@ -1,126 +1,77 @@
 @extends('index')
 @section('title')
-   Liên hệ
+    đặt phòng
 @endsection
 @section('slider')
-        <!-- BANNER -->
-        <section class="banner-tems text-center">
-            <div class="container">
-                <div class="banner-content">
-                    <h2>Các bước đặt phòng</h2>
-                    
-                </div>
+    <!-- BANNER -->
+    <section class="banner-tems text-center">
+        <div class="container">
+            <div class="banner-content">
+                <h2>ĐẶT PHÒNG VÀ THANH TOÁN</h2>
+
             </div>
-        </section>
-        <!-- END-BANNER -->
+        </div>
+    </section>
+    <!-- END-BANNER -->
 @endsection
 @section('content')
-     <!-- RESERVATION -->
-     <section class="section-reservation-page">
+    <!-- RESERVATION -->
+    <section class="section-reservation-page">
         <div class="container">
             <div class="reservation-page">
                 <!-- STEP -->
-                <div class="reservation_step">
+                {{-- <div class="reservation_step">
                     <ul>
-                        <li class="active"><a href="#"><span>1.</span>  Choose Date</a></li>
-                        <li><a href="#"><span>2.</span> Choose Room</a></li>
-                        <li><a href="#"><span>3.</span> Make a Reservation</a></li>
-                        <li><a href="#"><span>4.</span> Confirmation</a></li>
+                        <li class="active"><a href="#"><span>1.</span> Chọn ngày</a></li>
+                        <li><a href="#"><span>2.</span>Chọn phòng</a></li>
+                        <li><a href="#"><span>3.</span> Đặt chỗ</a></li>
+                        <li><a href="#"><span>4.</span>Xác Nhận</a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <!-- END / STEP -->
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                         <div class="sidebar">
                             <!-- WIDGET CHECK AVAILABILITY -->
                             <div class="widget widget_check_availability">
-                                <h4 class="widget-title">YOUR RESERVATION</h4>
-                                <div class="check_availability">
-                                    <h6 class="check_availability_title">your stay dates</h6>
-                                    <div class="check_availability-field">
-                                        <label>Arrive</label>
-                                        <div class="input-group date" data-date-format="dd-mm-yyyy" id="datepicker1">
-                                            <input class="form-control wrap-box" type="text" placeholder="Arrival Date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"  aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="check_availability-field">
-                                        <label>Night</label>
-                                        <select class="awe-select">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                    <div class="check_availability-field">
-                                        <label>Depature</label>
-                                        <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
-                                            <input class="form-control wrap-box" type="text" placeholder="Departure Date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                    <h6 class="check_availability_title">ROOMS &amp; GUest</h6>
-                                    <div class="check_availability-field">
-                                        <label>ROOMS</label>
-                                        <select class="awe-select">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                    <div class="check_availability_group">
-                                        <span class="label-group">ROOMS 1</span>
-                                        <div class="check_availability-field_group">
-                                            <div class="check_availability-field">
-                                                <label>Adult</label>
-                                                <select class="awe-select">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>
-                                            </div>
-                                            <div class="check_availability-field">
-                                                <label>Chirld</label>
-                                                <select class="awe-select">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
+                                <h4 class="widget-title">Đặt phòng của bạn</h4>
+                                <form action="{{ route('datphong') }}" method="post">
+                                    @csrf
+                                    <div class="check_availability">
+                                        <h6 class="check_availability_title">ngày lưu trú của bạn</h6>
+                                        <div class="check_availability-field">
+                                            <label>ngày đến</label>
+                                            <div class="input-group date" data-date-format="dd-mm-yyyy" id="datepicker1">
+                                                <input class="form-control wrap-box" type="text" name="ngay_den" placeholder="ngày đến">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"
+                                                        aria-hidden="true"></i></span>
+                                                        @error('ngay_den')
+                                                            <span style="color: red">{{$message}}</span>
+                                                        @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="check_availability_group">
-                                        <span class="label-group">ROOMS 2</span>
-                                        <div class="check_availability-field_group">
-                                            <div class="check_availability-field">
-                                                <label>Adult</label>
-                                                <select class="awe-select">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>
-                                            </div>
-                                            <div class="check_availability-field">
-                                                <label>Chirld</label>
-                                                <select class="awe-select">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
+                                       
+                                        <div class="check_availability-field">
+                                            <label>ngày khởi hành</label>
+                                            <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
+                                                <input class="form-control wrap-box"  name="ngay_kh" type="text"
+                                                    placeholder="ngày khởi hành">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"
+                                                        aria-hidden="true"></i></span>
+                                                        @error('ngay_kh')
+                                                        <span style="color: red">{{$message}}</span>
+                                                    @enderror
                                             </div>
                                         </div>
+                                        
+                                        <button class="btn-room btn" type="submit">Đặt phòng</button>
                                     </div>
-                                    <button class="btn-room btn">CHECK AVAILABLE</button>
-                                </div>
+                                </form>
                             </div>
                             <!-- END / WIDGET CHECK AVAILABILITY -->
                         </div>
                     </div>
-                    <div class=" col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    {{-- <div class=" col-lg-9 col-md-8 col-sm-12 col-xs-12">
                         <div class="reservation_content bg-gray">
                             <h2 class="reservation-heading">Availability</h2>
                             <div class="col-sm-6">
@@ -262,7 +213,345 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+                    <!-- CONTENT -->
+                    {{-- @dd($getphongyth) --}}
+                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                        <div class="reservation_content">
+                            <!-- RESERVATION ROOM -->
+                            <div class="reservation-room">
+                                @foreach ($getphongyth as $item)
+                                    <!-- ITEM -->
+                                    <div class="reservation-room_item">
+                                        <h2 class="reservation-room_name"><a href="#">{{ $item->ten_phong }}</a></h2>
+                                        <div class="reservation-room_img">
+                                            <a href="#"><img src="upload_img/{{ $item->anh_phong }}" alt="#"
+                                                    class="img-responsive"></a>
+                                        </div>
+                                        <div class="reservation-room_text">
+                                            <div class="reservation-room_desc">
+                                                <p>{{ $item->mo_ta }}</p>
+                                                <ul>
+                                                    <li>Diện tích:{{ $item->dien_tich }}</li>
+                                                    <li>Hướng nhìn:{{ $item->huong_nhin }}</li>
+                                                    <li>Giường:{{ $item->giuong }}</li>
+                                                </ul>
+                                            </div>
+                                            <a href="{{ route('detail', ['id' => $item->id_phong, 'idloaiphong' => $item->id_loai_phong]) }}"
+                                                class="reservation-room_view-more">Xem chi tiết</a>
+                                            <div class="clear"></div>
+                                            <p class="reservation-room_price">
+                                                <span
+                                                    class="reservation-room_amout">{{ number_format($item->gia_phong) }}</span>VND
+                                                / Ngày
+                                            </p>
+                                            {{-- <a href="#" class="btn btn-room">Đặt phòng</a> --}}
+                                        </div>
+                                        {{-- <div class="reservation-room_package">
+                                        <a data-toggle="collapse" href="#reservation-room_package-1" class="reservation-room_package-more collapsed">Show more package</a>
+                                        <div class="reservation-room_package-content collapse" id="reservation-room_package-1">
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/luxury.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                        </div>
+                                    </div> --}}
+                                    </div>
+                                    <!-- END / ITEM -->
+                                @endforeach
+
+                                {{-- <!-- ITEM -->
+                                <div class="reservation-room_item">
+                                    <h2 class="reservation-room_name"><a href="#">COUPLE room</a></h2>
+                                    <div class="reservation-room_img">
+                                        <a href="#"><img src="images/Reservation/COUPLE.jpg" alt="#" class="img-responsive"></a>
+                                    </div>
+                                    <div class="reservation-room_text">
+                                        <div class="reservation-room_desc">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type ...</p>
+                                            <ul>
+                                                <li>1 King Bed</li>
+                                                <li>Free Wi-Fi in all guest rooms</li>
+                                                <li>Separate sitting area</li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="reservation-room_view-more">View More Infomation</a>
+                                        <div class="clear"></div>
+                                        <p class="reservation-room_price">
+                                            <span class="reservation-room_amout">$330</span> / days
+                                        </p>
+                                        <a href="#" class="btn btn-room">BOOK ROOM</a>
+                                    </div>
+                                    <div class="reservation-room_package">
+                                        <a data-toggle="collapse" href="#reservation-room_package-2" class="reservation-room_package-more collapsed">Show more package</a>
+                                        <div class="reservation-room_package-content collapse" id="reservation-room_package-2">
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/COUPLE.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/COUPLE.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/COUPLE.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END / ITEM -->
+                                <!-- ITEM -->
+                                <div class="reservation-room_item  current-select">
+                                    <h2 class="reservation-room_name"><a href="#">STANDARD room</a></h2>
+                                    <div class="reservation-room_img">
+                                        <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                    </div>
+                                    <div class="reservation-room_text">
+                                        <div class="reservation-room_desc">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type ...</p>
+                                            <ul>
+                                                <li>1 King Bed</li>
+                                                <li>Free Wi-Fi in all guest rooms</li>
+                                                <li>Separate sitting area</li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="reservation-room_view-more">View More Infomation</a>
+                                        <div class="clear"></div>
+                                        <p class="reservation-room_price">
+                                            <span class="reservation-room_amout">$330</span> / days
+                                        </p>
+                                        <a href="#" class="btn btn-room">BOOK ROOM</a>
+                                    </div>
+                                    <div class="reservation-room_package">
+                                        <a data-toggle="collapse" href="#reservation-room_package-3" class="reservation-room_package-more collapsed">Show more package</a>
+                                        <div class="reservation-room_package-content collapse" id="reservation-room_package-3">
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/STANDARD.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END / ITEM -->
+                                <!-- ITEM -->
+                                <div class="reservation-room_item">
+                                    <h2 class="reservation-room_name"><a href="#">FAMILY room</a></h2>
+                                    <div class="reservation-room_img">
+                                        <a href="#"><img src="images/Reservation/family.jpg" alt="#" class="img-responsive"></a>
+                                    </div>
+                                    <div class="reservation-room_text">
+                                        <div class="reservation-room_desc">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type ...</p>
+                                            <ul>
+                                                <li>1 King Bed</li>
+                                                <li>Free Wi-Fi in all guest rooms</li>
+                                                <li>Separate sitting area</li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="reservation-room_view-more">View More Infomation</a>
+                                        <div class="clear"></div>
+                                        <p class="reservation-room_price">
+                                            <span class="reservation-room_amout">$330</span> / days
+                                        </p>
+                                        <a href="#" class="btn btn-room">BOOK ROOM</a>
+                                    </div>
+                                    <div class="reservation-room_package">
+                                        <a data-toggle="collapse" href="#reservation-room_package-4" class="reservation-room_package-more collapsed">Show more package</a>
+                                        <div class="reservation-room_package-content collapse" id="reservation-room_package-4">
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/family.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item current-select">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/family.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                            <!-- ITEM PACKAGE -->
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="#"><img src="images/Reservation/family.jpg" alt="#" class="img-responsive"></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="#">package standar</a></h4>
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout">$330</span>
+                                                        </p>
+                                                        <a href="#" class="btn btn-room">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END / ITEM PACKAGE -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END / ITEM --> --}}
+                            </div>
+                            <!-- END / RESERVATION ROOM -->
+                        </div>
                     </div>
+                    <!-- END / CONTENT -->
                 </div>
             </div>
         </div>

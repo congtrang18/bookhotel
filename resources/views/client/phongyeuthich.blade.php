@@ -34,18 +34,17 @@
             <tbody>
                 @foreach ($phongyeuthich as $key => $item)
                     <tr>
-
+{{-- @dd($item) --}}
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $item->ten_phong }}</td>
                         <td><a href="{{ route('detail', ['id' => $item->idphong, 'idloaiphong' => $item->idlp]) }}"><img
                                     src="upload_img/{{ $item->anh_phong }}" style="width: 100px; height: 80px;"
                                     alt=""></a></td>
                         <td>{{ number_format($item->gia_phong) }}VND</td>
-                        <td></td>
+                        <td>{{ $item->sl_nguoi }}</td>
                         <td colspan="2">
-                            {{-- <a href="{{ route('formedit', ['id'=>$item->id]) }}"  class="btn btn-warning">
-                        <i class="fas fa-edit"></i> 
-                    </a> --}}
+                            <a href="{{ route('datphongone', ['id'=>$item->id]) }}" class="btn btn-outline-success">Đặt phòng</a>
+
                             <a onclick="return confirm('bạn chắc chắn muốn xóa không')"
                                 href="{{ route('deletephongyeuthich', ['id' => $item->id]) }}" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i></a>

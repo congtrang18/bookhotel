@@ -29,7 +29,7 @@ class phongModel extends Model
     {
         return DB::select("SELECT * FROM `phong` WHERE phong.id <> $id AND phong.id_loai_phong=$idloaiphong;");
     }
-    public function addphongyeuthich($idphong,$ngay_toi)
+    public function addphongyeuthich($idphong)
     {
 
         $phong = DB::table('phong')->where('id', $idphong)->first();
@@ -40,7 +40,7 @@ class phongModel extends Model
             'anh_phong' => "$phong->imgroom",
             'nguoi_lon'=>$phong->nguoi_lon,
             'tre_em'=>$phong->tre_em,
-            'ngay_toi'=>$ngay_toi,
+            
             'id_khach_hang' => session('idkh'),
             'id_phong' => $phong->id,
 
@@ -51,7 +51,7 @@ class phongModel extends Model
     }
     public function getallphongyeuthich($idkh)
     {
-        return  DB::table('phong_yeu_thich')->select('phong_yeu_thich.*', 'phong.id as idphong', 'loai_phong.id as idlp')
+        return  DB::table('phong_yeu_thich')->select('phong_yeu_thich.*', 'phong.id as idphong','phong.sl_nguoi', 'loai_phong.id as idlp')
             ->join('phong', 'phong.id', 'phong_yeu_thich.id_phong')
             ->join('loai_phong', 'phong.id_loai_phong', 'loai_phong.id')
             ->where([

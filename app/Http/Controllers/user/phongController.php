@@ -51,7 +51,7 @@ class phongController extends Controller
             }
         }
         if (!$check) {
-            $this->phong->addphongyeuthich($request->idphong,date('Y-m-d',strtotime($request->ngay_toi)));
+            $this->phong->addphongyeuthich($request->idphong);
             
             return redirect()->route('getallphongyeuthich');
         }

@@ -19,7 +19,11 @@ Route::get('/detail', [phongController::class, 'detailPhong'])->name("detail");
 Route::post('/guibinhluan', [phongController::class, 'guibluser'])->name("gbl");
 
 Route::get('/phongyeuthich', [phongController::class, 'getallphongyeuthich'])->name("getallphongyeuthich");
-Route::get('/formdatphong', [datphongController::class, 'formdatphong'])->name("datphong");
+Route::get('/formdatphong', [datphongController::class, 'datcho1'])->name("datphong");
+Route::get('/formdatphongone', [datphongController::class, 'datcho1'])->name("datphongone");
+Route::post('/datphong', [datphongController::class, 'formdatphong'])->name("datphong");
+
+
 
 
 
