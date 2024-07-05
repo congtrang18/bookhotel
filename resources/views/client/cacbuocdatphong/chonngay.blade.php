@@ -42,7 +42,7 @@
                                         <div class="check_availability-field">
                                             <label>ngày đến</label>
                                             <div class="input-group date" data-date-format="dd-mm-yyyy" id="datepicker1">
-                                                <input class="form-control wrap-box" type="text" name="ngay_den" placeholder="ngày đến">
+                                                <input class="form-control wrap-box" value="{{old('ngay_den')}}" type="text" name="ngay_den" placeholder="ngày đến">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"
                                                         aria-hidden="true"></i></span>
                                                         @error('ngay_den')
@@ -54,7 +54,7 @@
                                         <div class="check_availability-field">
                                             <label>ngày khởi hành</label>
                                             <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
-                                                <input class="form-control wrap-box"  name="ngay_kh" type="text"
+                                                <input class="form-control wrap-box" value="{{old('ngay_kh')}}"  name="ngay_kh" type="text"
                                                     placeholder="ngày khởi hành">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"
                                                         aria-hidden="true"></i></span>

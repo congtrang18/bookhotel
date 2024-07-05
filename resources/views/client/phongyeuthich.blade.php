@@ -54,7 +54,7 @@
                 @endforeach
                 <tr>
                     <td colspan="5"></td>
-                    <td ><a href="{{ route('datphong') }}" class="btn btn-outline-success">Đặt phòng</a></td>
+                    <td ><a href="{{ route('datphongall') }}" class="btn btn-outline-success">Đặt phòng</a></td>
                 </tr>
 
 

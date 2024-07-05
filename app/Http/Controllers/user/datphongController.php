@@ -16,6 +16,8 @@ class datphongController extends Controller
     }
     public function formdatphong(Request $request)
     {
+
+        // dd(date('Y-m-d',strtotime('10-2-2004')));
         $request->validate([
             'ngay_den' => 'required',
             'ngay_kh' => 'required',
@@ -24,10 +26,31 @@ class datphongController extends Controller
             'ngay_kh.required' => 'ngày khỏi hành bắt buộc phải nhập',
 
         ]);
-        
+        if (date('Y-m-d', strtotime($request->ngay_kh)) > date('Y-m-d', strtotime($request->ngay_den))) {
+            return back()->withErrors(['ngay_kh' => 'ngày khởi hành phải nhỏ hơn ngày đến']);
+        }
+        if (date('Y-m-d', strtotime($request->ngay_kh)) < date('Y-m-d')) {
+            return back()->withErrors([
+                'ngay_kh' => 'ngày khởi hành phải lớn hơn hoặc bằng ngày của hiện tại',
+
+            ]);
+        }
+        if (date('Y-m-d', strtotime($request->ngay_den)) < date('Y-m-d')) {
+
+            return back()->withErrors([
+
+                'ngay_den' => 'ngày đến phải lớn hoặc bằng ngày của hiện tại'
+            ]);
+        }
+
         // dd($request->all());
-        return view('client.datphong', ['getallphongyth' => $this->phongyeuthich->datphongmodel(), 'khachhang' => $this->phongyeuthich->khachhangdatphong(session('idkh'))]);
+        return view('client.datphong', [
+            'getallphongyth' => $this->phongyeuthich->datphongmodel(),
+            'khachhang' => $this->phongyeuthich->khachhangdatphong(session('idkh')),
+            'tongtien' => $this->phongyeuthich->tongtienphongdat(session('idkh'))
+        ]);
     }
+
     public function datphongController()
     {
         // lấy tất cả phòng yêu thích ra rồi hiển thị ở form đặt phòng
@@ -42,12 +65,7 @@ class datphongController extends Controller
         // echo 2;
         return view('client.cacbuocdatphong.chonngay', ['getphongyth' => $this->phongyeuthich->datphongmodel()]);
     }
-    // public function datphong(){
-
-    // }
-    // public function datcho2()
-    // {
-    //     return view('client.cacbuocdatphong.chonngay');
-    // }
-
+    public function datphong()
+    {
+    }
 }
